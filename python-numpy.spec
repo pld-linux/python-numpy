@@ -156,7 +156,10 @@ python setup_all.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-python setup_all.py install --root=$RPM_BUILD_ROOT
+
+python setup_all.py install \
+	--root=$RPM_BUILD_ROOT
+
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
 %py_comp $RPM_BUILD_ROOT%{py_sitedir}
 
