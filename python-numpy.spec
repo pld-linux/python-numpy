@@ -14,6 +14,7 @@ Group(de):	Entwicklung/Sprachen/Python
 Group(es):	Desarrollo/Lenguages/Python
 Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
+Group(pt):	Desenvolvimento/Línguas/Python
 Source0:	http://prdownloads.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
 URL:		http://www.pfdubois.com/numpy/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -37,6 +38,7 @@ Group(de):	Entwicklung/Sprachen/Python
 Group(es):	Desarrollo/Lenguages/Python
 Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
+Group(pt):	Desenvolvimento/Línguas/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -54,6 +56,7 @@ Group(de):	Entwicklung/Sprachen/Python
 Group(es):	Desarrollo/Lenguages/Python
 Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
+Group(pt):	Desenvolvimento/Línguas/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -76,6 +79,7 @@ Group(de):	Entwicklung/Sprachen/Python
 Group(es):	Desarrollo/Lenguages/Python
 Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
+Group(pt):	Desenvolvimento/Línguas/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -103,6 +107,7 @@ Group(de):	Entwicklung/Sprachen/Python
 Group(es):	Desarrollo/Lenguages/Python
 Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
+Group(pt):	Desenvolvimento/Línguas/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -124,6 +129,7 @@ Group(de):	Entwicklung/Sprachen/Python
 Group(es):	Desarrollo/Lenguages/Python
 Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
+Group(pt):	Desenvolvimento/Línguas/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -148,6 +154,7 @@ Group(de):	Entwicklung/Sprachen/Python
 Group(es):	Desarrollo/Lenguages/Python
 Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
+Group(pt):	Desenvolvimento/Línguas/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
