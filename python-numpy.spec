@@ -66,7 +66,8 @@ u¿ywana do prowadzenia obliczeñ za pomoc± dyskretnej transformaty
 Fouriera na liczba rzeczywistych i zespolonych.
 
 %package kinds
-Summary:	PEP 0242
+Summary:	Implementation of PEP 0242 - precision and range control of numeric computations
+Summary(pl):	Implementacja propozycji PEP 0242 - mo¿liwo¶æ kontrolowania precyzji i zakresu obliczeñ numerycznych
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
 Group(pl):	Programowanie/Jêzyki/Python
@@ -75,10 +76,20 @@ Requires:	%{name} = %{version}
 Requires:	%{name}-kinds = %{version}
 
 %description kinds
-PEP 0242
+This is implementation of PEP 0242. PEP's abstract follows:
+
+This proposal gives the user optional control over the precision and
+range of numeric computations so that a computation can be written
+once and run anywhere with at least the desired precision and range.
+It is backward compatible with existing code.
 
 %description kinds -l pl
+Modu³ zawiera implementacjê propozycji PEP 0242. Oto jej streszczenie.
 
+Propozycja ta umo¿liwia u¿ytkownikowi, opcjonalnie, kontrolê nad
+precyzj± i zakresem obliczeñ numerycznych. Dziêki temu raz napisane
+obliczenia mog± byæ uruchamiane na dowolnej maszynie. Mechanizm jest
+kompatybilny wstecz z istniej±cymi programami.
 
 %package MA
 Summary:	MA - a facility for dealing with masked arrays
@@ -90,14 +101,14 @@ Group(pl):	Programowanie/Jêzyki/Python
 Requires:	%{name} = %{version}
 
 %description MA
-Masked arrays are arrays that may have missing or invalid entries. Module
-MA provides a work-alike replacement for Numeric that supports data arrays
-with masks.
+Masked arrays are arrays that may have missing or invalid entries.
+Module MA provides a work-alike replacement for Numeric that supports
+data arrays with masks.
 
 %description MA -l pl
-Macierze niepe³ne s± to macierze, którym mo¿e brakowaæ lub mog± zawieraæ
-niepoprawne warto¶ci. Modu³ MA zawiera odpowiednie narzêdzia do operowania
-na tego typu macierzach.
+Macierze niepe³ne s± to macierze, którym mo¿e brakowaæ lub mog±
+zawieraæ niepoprawne warto¶ci. Modu³ MA zawiera odpowiednie narzêdzia
+do operowania na tego typu macierzach.
 
 %package Properties
 Summary:	Property class implementation for Python
@@ -109,17 +120,17 @@ Group(pl):	Programowanie/Jêzyki/Python
 Requires:	%{name} = %{version}
 
 %description Properties
-PropertiedClass is a mixin class that can be used to emulate properties in
-a Python class. A property is an attribute whose read, write, or deleting
-requires special handling. It is also possible to use this facility to
-prevent the writing or deleting of a property.
+PropertiedClass is a mixin class that can be used to emulate
+properties in a Python class. A property is an attribute whose read,
+write, or deleting requires special handling. It is also possible to
+use this facility to prevent the writing or deleting of a property.
 
 %description Properties -l pl
-PropertiedClass jest klas±, która mo¿e byæ u¿yta do emulacji w³a¶ciwo¶ci
-w klasach jêzyka Python. W³a¶ciwo¶æ klasy jest atrybutem, którego czytanie,
-przypisywanie mu warto¶ci, czy te¿ jego usuwanie powinno byæ traktowane
-w sposób specjalny. Mechanizm ten mo¿e byæ te¿ u¿ywany w celu ustalenia
-jakiego¶ atrybutu jako tylko do odczytu.
+PropertiedClass jest klas±, która mo¿e byæ u¿yta do emulacji
+w³a¶ciwo¶ci w klasach jêzyka Python. W³a¶ciwo¶æ klasy jest atrybutem,
+którego czytanie, przypisywanie mu warto¶ci, czy te¿ jego usuwanie
+powinno byæ traktowane w sposób specjalny. Mechanizm ten mo¿e byæ te¿
+u¿ywany w celu ustalenia jakiego¶ atrybutu jako tylko do odczytu.
 
 %package RNG
 Summary:	Random Number Generator Object for NumPy
@@ -144,6 +155,7 @@ jêzyka Python.
 python setup_all.py build
 
 %install
+rm -rf $RPM_BUILD_ROOT
 python setup_all.py install --root=$RPM_BUILD_ROOT
 %python_compile_opt $RPM_BUILD_ROOT%{python_sitepkgsdir}
 %python_compile $RPM_BUILD_ROOT%{python_sitepkgsdir}
