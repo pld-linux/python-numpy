@@ -13,7 +13,6 @@ Source0:	http://dl.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
 Patch0:		%{name}-lite.patch
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	python-devel >= 1:2.3
-BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-libs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
