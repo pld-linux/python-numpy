@@ -47,18 +47,18 @@ RNG provides a random number object to Numerical Python.
 %build
 cd Numerical
 cp $RPM_SOURCE_DIR/Makefile.pre.in .
-make -f Makefile.pre.in boot
-make OPT="$RPM_OPT_FLAGS"
+%{__make} -f Makefile.pre.in boot
+%{__make} OPT="$RPM_OPT_FLAGS"
 
 cd $RPM_BUILD_DIR/LLNLPython8/Graphics
 cp $RPM_SOURCE_DIR/Makefile.pre.in .
-make -f Makefile.pre.in boot
-make OPT="$RPM_OPT_FLAGS"
+%{__make} -f Makefile.pre.in boot
+%{__make} OPT="$RPM_OPT_FLAGS"
 
 cd $RPM_BUILD_DIR/LLNLPython8/RNG
 cp $RPM_SOURCE_DIR/Makefile.pre.in .
-make -f Makefile.pre.in boot
-make OPT="$RPM_OPT_FLAGS"
+%{__make} -f Makefile.pre.in boot
+%{__make} OPT="$RPM_OPT_FLAGS"
 
 %install
 cd Numerical
