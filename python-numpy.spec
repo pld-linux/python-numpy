@@ -7,7 +7,7 @@ Summary:	Python numerical facilities
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
 Version:	21.0
-Release:	2
+Release:	3
 License:	distributable
 Group:		Libraries/Python
 Source0:	http://prdownloads.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
@@ -28,7 +28,7 @@ wielowymiarowych.
 %package devel
 Summary:	C header files for numerical modules
 Summary(pl):	Pliki nag³ówkowe jêzyka C modu³ów numerycznych
-Group:		Libraries/Python
+Group:		Development/Languages/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
