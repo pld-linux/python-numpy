@@ -1,7 +1,7 @@
 %include	/usr/lib/rpm/macros.python
 
-%define module numpy
-%define mname Numeric
+%define		module	numpy
+%define		mname	Numeric
 
 Summary:	Python numerical facilities
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
@@ -12,10 +12,10 @@ License:	distributable
 Group:		Libraries/Python
 Source0:	http://prdownloads.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
 URL:		http://www.pfdubois.com/numpy/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-BuildRequires:	python-devel >= 2.2
-%pyrequires_eq	python
+BuildRequires:	python-devel >= 2.2.1
 BuildRequires:	rpm-pythonprov
+%pyrequires_eq	python
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 NumPy is a collection of extension modules to provide high-performance
