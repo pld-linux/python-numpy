@@ -14,7 +14,7 @@ Source0:	http://prdownloads.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
 URL:		http://www.pfdubois.com/numpy/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	python-devel >= 2.2
-%requires_eq	python
+%pyrequires_eq	python
 BuildRequires:	rpm-pythonprov
 
 %description
@@ -29,7 +29,7 @@ wielowymiarowych.
 Summary:	C header files for numerical modules
 Summary(pl):	Pliki nag³ówkowe jêzyka C modu³ów numerycznych
 Group:		Development/Languages/Python
-%requires_eq	python
+%pyrequires_eq	python
 Requires:	%{name} = %{version}
 
 %description devel
@@ -42,7 +42,7 @@ Pliki nag³ówkowe jêzyka C modu³ów numerycznych.
 Summary:	Interface to the FFTPACK FORTRAN library
 Summary(pl):	Interfejs do biblioteki FFTPACK jêzyka Fortran
 Group:		Libraries/Python
-%requires_eq	python
+%pyrequires_eq	python
 Requires:	%{name} = %{version}
 
 %description FFT
@@ -60,7 +60,7 @@ Fouriera na liczba rzeczywistych i zespolonych.
 Summary:	Implementation of PEP 0242 - precision and range control of numeric computations
 Summary(pl):	Implementacja propozycji PEP 0242 - mo¿liwo¶æ kontrolowania precyzji i zakresu obliczeñ numerycznych
 Group:		Libraries/Python
-%requires_eq	python
+%pyrequires_eq	python
 Requires:	%{name} = %{version}
 
 %description kinds
@@ -83,7 +83,7 @@ kompatybilny wstecz z istniej±cymi programami.
 Summary:	MA - a facility for dealing with masked arrays
 Summary(pl):	Modu³ do obs³ugi macierzy niepe³nych
 Group:		Libraries/Python
-%requires_eq	python
+%pyrequires_eq	python
 Requires:	%{name} = %{version}
 
 %description MA
@@ -100,7 +100,7 @@ do operowania na tego typu macierzach.
 Summary:	Property class implementation for Python
 Summary(pl):	Implementacja klasy z w³a¶ciwo¶ciami dla jêzyka Python
 Group:		Libraries/Python
-%requires_eq	python
+%pyrequires_eq	python
 Requires:	%{name} = %{version}
 
 %description Properties
@@ -120,7 +120,7 @@ u¿ywany w celu ustalenia jakiego¶ atrybutu jako tylko do odczytu.
 Summary:	Random Number Generator Object for NumPy
 Summary:	Obiekt generatora liczb losowych dla modu³u NumPy
 Group:		Libraries/Python
-%requires_eq	python
+%pyrequires_eq	python
 Requires:	%{name} = %{version}
 
 %description RNG
