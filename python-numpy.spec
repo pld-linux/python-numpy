@@ -10,8 +10,8 @@
 Summary:	Python numerical facilities 
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
-Version:	20.1.0
-Release:	2
+Version:	20.2.0
+Release:	1
 License:	Distributable
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
@@ -152,6 +152,8 @@ jêzyka Python.
 %setup -q -n %{mname}-%{version}
 
 %build
+CFLAGS="%{rpmcflags}"
+export CFLAGS
 python setup_all.py build
 
 %install
