@@ -10,7 +10,7 @@
 Summary:	Python numerical facilities 
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
-Version:	20.1.0b2
+Version:	20.1.0
 Release:	1
 Copyright:	Distributable
 Group:		Development/Languages/Python
@@ -193,7 +193,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files Properties
 %defattr(644,root,root,755)
-%{python_sitepkgsdir}/Properties.py[co]
+%dir %{python_sitepkgsdir}/PropertiedClasses
+%{python_sitepkgsdir}/PropertiedClasses/*.py[co]
 
 %files RNG
 %defattr(644,root,root,755)
