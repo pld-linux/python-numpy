@@ -11,6 +11,7 @@ Release:	4
 License:	distributable
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
+# Source0-md5:	0684989aa6dfa4eba616ca7e36c524fd
 URL:		http://www.pfdubois.com/numpy/
 BuildRequires:	python-devel >= 2.2.1
 BuildRequires:	rpm-pythonprov
