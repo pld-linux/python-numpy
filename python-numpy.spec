@@ -6,10 +6,10 @@
 Summary:	Python numerical facilities
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
-Version:	20.3
-Release:	3
+Version:	21.0
+Release:	1
 License:	distributable
-Group:		Libraries/Python
+Group:		Development/Languages/Python
 Source0:	http://prdownloads.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
 URL:		http://www.pfdubois.com/numpy/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -41,7 +41,7 @@ Pliki nag³ówkowe jêzyka C modu³ów numerycznych.
 %package FFT
 Summary:	Interface to the FFTPACK FORTRAN library
 Summary(pl):	Interfejs do biblioteki FFTPACK jêzyka Fortran
-Group:		Libraries/Python
+Group:		Development/Languages/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -59,7 +59,7 @@ Fouriera na liczba rzeczywistych i zespolonych.
 %package kinds
 Summary:	Implementation of PEP 0242 - precision and range control of numeric computations
 Summary(pl):	Implementacja propozycji PEP 0242 - mo¿liwo¶æ kontrolowania precyzji i zakresu obliczeñ numerycznych
-Group:		Libraries/Python
+Group:		Development/Languages/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -82,7 +82,7 @@ kompatybilny wstecz z istniej±cymi programami.
 %package MA
 Summary:	MA - a facility for dealing with masked arrays
 Summary(pl):	Modu³ do obs³ugi macierzy niepe³nych
-Group:		Libraries/Python
+Group:		Development/Languages/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -99,7 +99,7 @@ do operowania na tego typu macierzach.
 %package Properties
 Summary:	Property class implementation for Python
 Summary(pl):	Implementacja klasy z w³a¶ciwo¶ciami dla jêzyka Python
-Group:		Libraries/Python
+Group:		Development/Languages/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -119,7 +119,7 @@ u¿ywany w celu ustalenia jakiego¶ atrybutu jako tylko do odczytu.
 %package RNG
 Summary:	Random Number Generator Object for NumPy
 Summary:	Obiekt generatora liczb losowych dla modu³u NumPy
-Group:		Libraries/Python
+Group:		Development/Languages/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -136,12 +136,12 @@ jêzyka Python.
 %build
 CC="%{__cc}"; export CC
 CFLAGS="%{rpmcflags}"; export CFLAGS
-python setup_all.py build
+python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-python setup_all.py install \
+python setup.py install \
 	--root=$RPM_BUILD_ROOT
 
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
@@ -163,28 +163,28 @@ rm -rf $RPM_BUILD_ROOT
 
 %files FFT
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/FFT
-%attr(755,root,root) %{py_sitedir}/FFT/*.so
-%{py_sitedir}/FFT/*.py[co]
+%dir %{py_sitedir}/%{mname}/FFT
+%attr(755,root,root) %{py_sitedir}/%{mname}/FFT/*.so
+%{py_sitedir}/%{mname}/FFT/*.py[co]
 
 %files kinds
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/kinds
-%attr(755,root,root) %{py_sitedir}/kinds/*.so
-%{py_sitedir}/kinds/*.py[co]
+%dir %{py_sitedir}/%{mname}/kinds
+%attr(755,root,root) %{py_sitedir}/%{mname}/kinds/*.so
+%{py_sitedir}/%{mname}/kinds/*.py[co]
 
 %files MA
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/MA
-%{py_sitedir}/MA/*.py[co]
+%dir %{py_sitedir}/%{mname}/MA
+%{py_sitedir}/%{mname}/MA/*.py[co]
 
 %files Properties
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/PropertiedClasses
-%{py_sitedir}/PropertiedClasses/*.py[co]
+%dir %{py_sitedir}/%{mname}/PropertiedClasses
+%{py_sitedir}/%{mname}/PropertiedClasses/*.py[co]
 
 %files RNG
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/RNG
-%attr(755,root,root) %{py_sitedir}/RNG/*.so
-%{py_sitedir}/RNG/*.py[co]
+%dir %{py_sitedir}/%{mname}/RNG
+%attr(755,root,root) %{py_sitedir}/%{mname}/RNG/*.so
+%{py_sitedir}/%{mname}/RNG/*.py[co]
