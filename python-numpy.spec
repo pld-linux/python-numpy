@@ -1,123 +1,145 @@
+
+%define module numpy
+%define mname Numeric
+
+%define	python_ver	%(echo `python -c "import sys; print (sys.version[:3])"`)
+%define	python_sitepkgsdir	%(echo `python -c "import sys; print (sys.prefix + '/lib/python' + sys.version[:3] + '/site-packages/')"`)
+%define python_compile_opt python -O -c "import compileall; import sys; compileall.compile_dir(sys.argv[1])"
+%define python_compile python -c "import compileall; import sys; compileall.compile_dir(sys.argv[1])"
+
 Summary:	Python numerical facilities 
-Name:		python-numpy
-Version:	1.8 
+Name:		python-%{module}
+Version:	20.1.0a3
 Release:	1
 Copyright:	Distributable
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
 Group(pl):	Programowanie/Jêzyki/Python
-Source0:	LLNLPython.tgz
-Source1:	Makefile.pre.in
-Patch0:		LLNLPython8-fixbugs.patch
-Patch1:		LLNLPython8-fixdirs.patch
-URL:		http://www.python.org/topics/scicomp/numpy.html
-Icon:		linux-python-numpy-icon.gif 
+Source0:	http://prdownloads.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
+URL:		http://www.pfdubois.com/numpy/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Requires:	python >= 1.5
+BuildRequires:	python-devel >= 1.5
 
 %description
 NumPy is a collection of extension modules to provide high-performance
 multidimensional numeric arrays to the Python programming language.
 
-%package gist
-Summary:	Xlib-based plotting for NumPy
+%package devel
+Summary:	N/A
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
 Group(pl):	Programowanie/Jêzyki/Python
-Requires:	yorick >= 1.4, python-numpy >= 1.5
+Requires:	%{name} = %{version}
 
-%description gist
-Gist is an extension of python that allows plotting of arbitrary NumPy
-arrays. Both 2-D and 3-D plotting is available. You can get started
-with online help from within python using
-  >>> from gist import *
-  >>> help("help.")
-  >>> help("gist.")
+%description devel
+N/A
+
+%package FFT
+Summary:	N/A
+Group:		Development/Languages/Python
+Group(de):	Entwicklung/Sprachen/Python
+Group(pl):	Programowanie/Jêzyki/Python
+Requires:	%{name} = %{version}
+
+%description FFT
+N/A
+
+%package kinds
+Summary:	N/A
+Group:		Development/Languages/Python
+Group(de):	Entwicklung/Sprachen/Python
+Group(pl):	Programowanie/Jêzyki/Python
+Requires:	%{name} = %{version}
+Requires:	%{name}-kinds = %{version}
+
+%description kinds
+N/A
+
+%package MA
+Summary:	N/A
+Group:		Development/Languages/Python
+Group(de):	Entwicklung/Sprachen/Python
+Group(pl):	Programowanie/Jêzyki/Python
+Requires:	%{name} = %{version}
+
+%description MA
+N/A
+
+%package Properties
+Summary:	N/A
+Group:		Development/Languages/Python
+Group(de):	Entwicklung/Sprachen/Python
+Group(pl):	Programowanie/Jêzyki/Python
+Requires:	%{name} = %{version}
+
+%description Properties
+N/A
 
 %package RNG
 Summary:	Random Number Generator Objects for NumPy
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
 Group(pl):	Programowanie/Jêzyki/Python
-Requires:	python-numpy >= 1.5
+Requires:	%{name} = %{version}
 
 %description RNG
 RNG provides a random number object to Numerical Python.
 
 %prep
-%setup -q -n LLNLPython8/
-%patch0 -p1
-%patch1 -p1
+%setup -q -n %{mname}-%{version}
 
 %build
-cd Numerical
-cp -f %{SOURCE1} .
-%{__make} -f Makefile.pre.in boot
-%{__make} OPT="%{rpmcflags}"
-
-cd $RPM_BUILD_DIR/LLNLPython8/Graphics
-cp -f %{SOURCE1} .
-%{__make} -f Makefile.pre.in boot
-%{__make} OPT="%{rpmcflags}"
-
-cd $RPM_BUILD_DIR/LLNLPython8/RNG
-cp -f %{SOURCE1} .
-%{__make} -f Makefile.pre.in boot
-%{__make} OPT="%{rpmcflags}"
+python setup_all.py build
 
 %install
-rm -rf $RPM_BUILD_ROOT
-cd Numerical
-install -d $RPM_BUILD_ROOT%{_includedir}/python1.5
-install Include/* $RPM_BUILD_ROOT%{_includedir}/python1.5
-install -d $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/NumPy
-install *.so $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/NumPy
-install Lib/* $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/NumPy
-echo "NumPy" > $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/NumPy.pth
-
-cd ../Graphics
-install -d $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/Graphics
-install *.so $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/Graphics
-install Gist/Lib/*.py Gist/Lib/*.help $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/Graphics
-install Gist/Demo/*.* Gist3D/Demo/*.* OOG/Demo/*.* $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/Graphics
-install Gist3D/Lib/*.py $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/Graphics
-install OOG/Lib/*.py $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/Graphics
-install Arrayfcns/Lib/*.py $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/Graphics
-echo "Graphics" > $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/Graphics.pth
-
-cd ../RNG
-install -d $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/RNG
-install *.so $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/RNG
-install Lib/*.py $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/RNG
-echo "RNG" > $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/RNG.pth
+python setup_all.py install --root=$RPM_BUILD_ROOT
+%python_compile_opt $RPM_BUILD_ROOT%{python_sitepkgsdir}
+%python_compile $RPM_BUILD_ROOT%{python_sitepkgsdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-if ! grep "^%{_libdir}/python1.5/site-packages/NumPy\$" /etc/ld.so.conf > /dev/null; then
-	echo "%{_libdir}/python1.5/site-packages/NumPy" >> /etc/ld.so.conf
-fi
-ldconfig -v
-
 %files
 %defattr(644,root,root,755)
-%doc Numerical/Doc Numerical/Demo Numerical/Test  
-%{_libdir}/python1.5/site-packages/NumPy.pth
-%{_libdir}/python1.5/site-packages/NumPy
-%{_includedir}/python1.5/arrayobject.h
-%{_includedir}/python1.5/f2c.h
-%{_includedir}/python1.5/fftpack.h
-%{_includedir}/python1.5/ranlib.h
-%{_includedir}/python1.5/ufuncobject.h
+%dir %{python_sitepkgsdir}/%{mname}
+%{python_sitepkgsdir}/%{mname}.pth
+%attr(755,root,root) %{python_sitepkgsdir}/%{mname}/*.so
+%{python_sitepkgsdir}/%{mname}/*.pyc
+%{python_sitepkgsdir}/%{mname}/*.pyo
 
-%files gist
+%files devel
 %defattr(644,root,root,755)
-%{_libdir}/python1.5/site-packages/Graphics.pth
-%{_libdir}/python1.5/site-packages/Graphics
+%{_includedir}/python%{python_ver}/%{mname}
+
+%files FFT
+%defattr(644,root,root,755)
+%dir %{python_sitepkgsdir}/FFT
+%attr(755,root,root) %{python_sitepkgsdir}/FFT/*.so
+%{python_sitepkgsdir}/FFT/*.pyc
+%{python_sitepkgsdir}/FFT/*.pyo
+
+%files kinds
+%defattr(644,root,root,755)
+%dir %{python_sitepkgsdir}/kinds
+%attr(755,root,root) %{python_sitepkgsdir}/kinds/*.so
+%{python_sitepkgsdir}/kinds/*.pyc
+%{python_sitepkgsdir}/kinds/*.pyo
+
+%files MA
+%defattr(644,root,root,755)
+%dir %{python_sitepkgsdir}/MA
+%{python_sitepkgsdir}/MA/*.pyc
+%{python_sitepkgsdir}/MA/*.pyo
+
+%files Properties
+%defattr(644,root,root,755)
+%{python_sitepkgsdir}/Properties.pyc
+%{python_sitepkgsdir}/Properties.pyo
 
 %files RNG
 %defattr(644,root,root,755)
-%doc RNG/Demo
-%{_libdir}/python1.5/site-packages/RNG.pth
-%{_libdir}/python1.5/site-packages/RNG
+%dir %{python_sitepkgsdir}/RNG
+%attr(755,root,root) %{python_sitepkgsdir}/RNG/*.so
+%{python_sitepkgsdir}/RNG/*.pyc
+%{python_sitepkgsdir}/RNG/*.pyo
