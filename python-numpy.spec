@@ -10,11 +10,6 @@ Version:	20.3
 Release:	2
 License:	distributable
 Group:		Development/Languages/Python
-Group(de):	Entwicklung/Sprachen/Python
-Group(es):	Desarrollo/Lenguages/Python
-Group(fr):	Development/Langues/Python
-Group(pl):	Programowanie/Jêzyki/Python
-Group(pt):	Desenvolvimento/Línguas/Python
 Source0:	http://prdownloads.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
 URL:		http://www.pfdubois.com/numpy/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -34,11 +29,6 @@ wielowymiarowych.
 Summary:	C header files for numerical modules
 Summary(pl):	Pliki nag³ówkowe jêzyka C modu³ów numerycznych
 Group:		Development/Languages/Python
-Group(de):	Entwicklung/Sprachen/Python
-Group(es):	Desarrollo/Lenguages/Python
-Group(fr):	Development/Langues/Python
-Group(pl):	Programowanie/Jêzyki/Python
-Group(pt):	Desenvolvimento/Línguas/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -52,11 +42,6 @@ Pliki nag³ówkowe jêzyka C modu³ów numerycznych.
 Summary:	Interface to the FFTPACK FORTRAN library
 Summary(pl):	Interfejs do biblioteki FFTPACK jêzyka Fortran
 Group:		Development/Languages/Python
-Group(de):	Entwicklung/Sprachen/Python
-Group(es):	Desarrollo/Lenguages/Python
-Group(fr):	Development/Langues/Python
-Group(pl):	Programowanie/Jêzyki/Python
-Group(pt):	Desenvolvimento/Línguas/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -75,11 +60,6 @@ Fouriera na liczba rzeczywistych i zespolonych.
 Summary:	Implementation of PEP 0242 - precision and range control of numeric computations
 Summary(pl):	Implementacja propozycji PEP 0242 - mo¿liwo¶æ kontrolowania precyzji i zakresu obliczeñ numerycznych
 Group:		Development/Languages/Python
-Group(de):	Entwicklung/Sprachen/Python
-Group(es):	Desarrollo/Lenguages/Python
-Group(fr):	Development/Langues/Python
-Group(pl):	Programowanie/Jêzyki/Python
-Group(pt):	Desenvolvimento/Línguas/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -103,11 +83,6 @@ kompatybilny wstecz z istniej±cymi programami.
 Summary:	MA - a facility for dealing with masked arrays
 Summary(pl):	Modu³ do obs³ugi macierzy niepe³nych
 Group:		Development/Languages/Python
-Group(de):	Entwicklung/Sprachen/Python
-Group(es):	Desarrollo/Lenguages/Python
-Group(fr):	Development/Langues/Python
-Group(pl):	Programowanie/Jêzyki/Python
-Group(pt):	Desenvolvimento/Línguas/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -125,11 +100,6 @@ do operowania na tego typu macierzach.
 Summary:	Property class implementation for Python
 Summary(pl):	Implementacja klasy z w³a¶ciwo¶ciami dla jêzyka Python
 Group:		Development/Languages/Python
-Group(de):	Entwicklung/Sprachen/Python
-Group(es):	Desarrollo/Lenguages/Python
-Group(fr):	Development/Langues/Python
-Group(pl):	Programowanie/Jêzyki/Python
-Group(pt):	Desenvolvimento/Línguas/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -150,11 +120,6 @@ u¿ywany w celu ustalenia jakiego¶ atrybutu jako tylko do odczytu.
 Summary:	Random Number Generator Object for NumPy
 Summary:	Obiekt generatora liczb losowych dla modu³u NumPy
 Group:		Development/Languages/Python
-Group(de):	Entwicklung/Sprachen/Python
-Group(es):	Desarrollo/Lenguages/Python
-Group(fr):	Development/Langues/Python
-Group(pl):	Programowanie/Jêzyki/Python
-Group(pt):	Desenvolvimento/Línguas/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
