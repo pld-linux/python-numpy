@@ -2,11 +2,6 @@
 %define module numpy
 %define mname Numeric
 
-%define	python_ver	%(echo `python -c "import sys; print (sys.version[:3])"`)
-%define	python_sitepkgsdir	%(echo `python -c "import sys; print (sys.prefix + '/lib/python' + sys.version[:3] + '/site-packages/')"`)
-%define python_compile_opt python -O -c "import compileall; import sys; compileall.compile_dir(sys.argv[1])"
-%define python_compile python -c "import compileall; import sys; compileall.compile_dir(sys.argv[1])"
-
 Summary:	Python numerical facilities 
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
@@ -21,6 +16,8 @@ URL:		http://www.pfdubois.com/numpy/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %requires_eq	python
 BuildRequires:	python-devel >= 1.5
+
+%include /usr/lib/rpm/macros.python
 
 %description
 NumPy is a collection of extension modules to provide high-performance
@@ -159,47 +156,47 @@ python setup_all.py build
 %install
 rm -rf $RPM_BUILD_ROOT
 python setup_all.py install --root=$RPM_BUILD_ROOT
-%python_compile_opt $RPM_BUILD_ROOT%{python_sitepkgsdir}
-%python_compile $RPM_BUILD_ROOT%{python_sitepkgsdir}
+%py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
+%py_comp $RPM_BUILD_ROOT%{py_sitedir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%dir %{python_sitepkgsdir}/%{mname}
-%{python_sitepkgsdir}/%{mname}.pth
-%attr(755,root,root) %{python_sitepkgsdir}/%{mname}/*.so
-%{python_sitepkgsdir}/%{mname}/*.py[co]
+%dir %{py_sitedir}/%{mname}
+%{py_sitedir}/%{mname}.pth
+%attr(755,root,root) %{py_sitedir}/%{mname}/*.so
+%{py_sitedir}/%{mname}/*.py[co]
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/python%{python_ver}/%{mname}
+%{_includedir}/python%{py_ver}/%{mname}
 
 %files FFT
 %defattr(644,root,root,755)
-%dir %{python_sitepkgsdir}/FFT
-%attr(755,root,root) %{python_sitepkgsdir}/FFT/*.so
-%{python_sitepkgsdir}/FFT/*.py[co]
+%dir %{py_sitedir}/FFT
+%attr(755,root,root) %{py_sitedir}/FFT/*.so
+%{py_sitedir}/FFT/*.py[co]
 
 %files kinds
 %defattr(644,root,root,755)
-%dir %{python_sitepkgsdir}/kinds
-%attr(755,root,root) %{python_sitepkgsdir}/kinds/*.so
-%{python_sitepkgsdir}/kinds/*.py[co]
+%dir %{py_sitedir}/kinds
+%attr(755,root,root) %{py_sitedir}/kinds/*.so
+%{py_sitedir}/kinds/*.py[co]
 
 %files MA
 %defattr(644,root,root,755)
-%dir %{python_sitepkgsdir}/MA
-%{python_sitepkgsdir}/MA/*.py[co]
+%dir %{py_sitedir}/MA
+%{py_sitedir}/MA/*.py[co]
 
 %files Properties
 %defattr(644,root,root,755)
-%dir %{python_sitepkgsdir}/PropertiedClasses
-%{python_sitepkgsdir}/PropertiedClasses/*.py[co]
+%dir %{py_sitedir}/PropertiedClasses
+%{py_sitedir}/PropertiedClasses/*.py[co]
 
 %files RNG
 %defattr(644,root,root,755)
-%dir %{python_sitepkgsdir}/RNG
-%attr(755,root,root) %{python_sitepkgsdir}/RNG/*.so
-%{python_sitepkgsdir}/RNG/*.py[co]
+%dir %{py_sitedir}/RNG
+%attr(755,root,root) %{py_sitedir}/RNG/*.so
+%{py_sitedir}/RNG/*.py[co]
