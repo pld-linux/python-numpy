@@ -105,8 +105,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{python_sitepkgsdir}/%{mname}
 %{python_sitepkgsdir}/%{mname}.pth
 %attr(755,root,root) %{python_sitepkgsdir}/%{mname}/*.so
-%{python_sitepkgsdir}/%{mname}/*.pyc
-%{python_sitepkgsdir}/%{mname}/*.pyo
+%{python_sitepkgsdir}/%{mname}/*.py?
 
 %files devel
 %defattr(644,root,root,755)
@@ -116,21 +115,18 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{python_sitepkgsdir}/FFT
 %attr(755,root,root) %{python_sitepkgsdir}/FFT/*.so
-%{python_sitepkgsdir}/FFT/*.pyc
-%{python_sitepkgsdir}/FFT/*.pyo
+%{python_sitepkgsdir}/FFT/*.py?
 
 %files kinds
 %defattr(644,root,root,755)
 %dir %{python_sitepkgsdir}/kinds
 %attr(755,root,root) %{python_sitepkgsdir}/kinds/*.so
-%{python_sitepkgsdir}/kinds/*.pyc
-%{python_sitepkgsdir}/kinds/*.pyo
+%{python_sitepkgsdir}/kinds/*.py?
 
 %files MA
 %defattr(644,root,root,755)
 %dir %{python_sitepkgsdir}/MA
-%{python_sitepkgsdir}/MA/*.pyc
-%{python_sitepkgsdir}/MA/*.pyo
+%{python_sitepkgsdir}/MA/*.py?
 
 %files Properties
 %defattr(644,root,root,755)
@@ -141,5 +137,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{python_sitepkgsdir}/RNG
 %attr(755,root,root) %{python_sitepkgsdir}/RNG/*.so
-%{python_sitepkgsdir}/RNG/*.pyc
-%{python_sitepkgsdir}/RNG/*.pyo
+%{python_sitepkgsdir}/RNG/*.py?
