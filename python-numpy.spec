@@ -30,7 +30,7 @@ Summary:	C header files for numerical modules
 Summary(pl):	Pliki nag³ówkowe jêzyka C modu³ów numerycznych
 Group:		Development/Languages/Python
 %pyrequires_eq	python
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 C header files for numerical modules.
@@ -43,7 +43,7 @@ Summary:	Interface to the FFTPACK FORTRAN library
 Summary(pl):	Interfejs do biblioteki FFTPACK jêzyka Fortran
 Group:		Libraries/Python
 %pyrequires_eq	python
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description FFT
 The FFT.py module provides a simple interface to the FFTPACK FORTRAN
@@ -62,7 +62,7 @@ Fouriera na liczba rzeczywistych i zespolonych.
 #Summary(pl):	Implementacja propozycji PEP 0242 - mo¿liwo¶æ kontrolowania precyzji i zakresu obliczeñ numerycznych
 #Group:		Libraries/Python
 #%pyrequires_eq	python
-#Requires:	%{name} = %{version}
+#Requires:	%{name} = %{version}-%{release}
 #
 #%description kinds
 #This is implementation of PEP 0242. PEP's abstract follows:
@@ -85,7 +85,7 @@ Summary:	MA - a facility for dealing with masked arrays
 Summary(pl):	Modu³ do obs³ugi macierzy niepe³nych
 Group:		Libraries/Python
 %pyrequires_eq	python
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description MA
 Masked arrays are arrays that may have missing or invalid entries.
@@ -103,7 +103,7 @@ do operowania na tego typu macierzach.
 #Summary(pl):	Implementacja klasy z w³a¶ciwo¶ciami dla jêzyka Python
 #Group:		Libraries/Python
 #%pyrequires_eq	python
-#Requires:	%{name} = %{version}
+#Requires:	%{name} = %{version}-%{release}
 #
 #%description Properties
 #PropertiedClass is a mixin class that can be used to emulate
@@ -123,7 +123,7 @@ Summary:	Random Number Generator Object for NumPy
 Summary(pl):	Obiekt generatora liczb losowych dla modu³u NumPy
 Group:		Libraries/Python
 %pyrequires_eq	python
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description RNG
 RNG provides a random number object to Numerical Python.
