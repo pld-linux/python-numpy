@@ -13,7 +13,7 @@ Source0:	http://dl.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
 # Source0-md5:	89da82dd9dd7fc331f5752a68dc79dba
 Patch0:		%{name}-lite.patch
 URL:		http://www.pfdubois.com/numpy/
-BuildRequires:	python-devel >= 2.3
+BuildRequires:	python-devel >= 1:2.3
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
