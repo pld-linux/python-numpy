@@ -1,22 +1,24 @@
+%include	/usr/lib/rpm/macros.python
 
 %define module numpy
 %define mname Numeric
 
-%include	/usr/lib/rpm/macros.python
 Summary:	Python numerical facilities 
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
 Version:	20.3
-Release:	1
+Release:	2
 License:	distributable
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
+Group(es):	Desarrollo/Lenguages/Python
+Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
 Source0:	http://prdownloads.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
 URL:		http://www.pfdubois.com/numpy/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRequires:	python-devel >= 2.2
 %requires_eq	python
-BuildRequires:	python-devel >= 1.5
 BuildRequires:	rpm-pythonprov
 
 %description
@@ -32,6 +34,8 @@ Summary:	C header files for numerical modules
 Summary(pl):	Pliki nag³ówkowe jêzyka C modu³ów numerycznych
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
+Group(es):	Desarrollo/Lenguages/Python
+Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
@@ -47,6 +51,8 @@ Summary:	Interface to the FFTPACK FORTRAN library
 Summary(pl):	Interfejs do biblioteki FFTPACK jêzyka Fortran
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
+Group(es):	Desarrollo/Lenguages/Python
+Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
@@ -67,6 +73,8 @@ Summary:	Implementation of PEP 0242 - precision and range control of numeric com
 Summary(pl):	Implementacja propozycji PEP 0242 - mo¿liwo¶æ kontrolowania precyzji i zakresu obliczeñ numerycznych
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
+Group(es):	Desarrollo/Lenguages/Python
+Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
@@ -92,6 +100,8 @@ Summary:	MA - a facility for dealing with masked arrays
 Summary(pl):	Modu³ do obs³ugi macierzy niepe³nych
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
+Group(es):	Desarrollo/Lenguages/Python
+Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
@@ -111,6 +121,8 @@ Summary:	Property class implementation for Python
 Summary(pl):	Implementacja klasy z w³a¶ciwo¶ciami dla jêzyka Python
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
+Group(es):	Desarrollo/Lenguages/Python
+Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
@@ -133,6 +145,8 @@ Summary:	Random Number Generator Object for NumPy
 Summary:	Obiekt generatora liczb losowych dla modu³u NumPy
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
+Group(es):	Desarrollo/Lenguages/Python
+Group(fr):	Development/Langues/Python
 Group(pl):	Programowanie/Jêzyki/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
