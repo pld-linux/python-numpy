@@ -3,7 +3,7 @@
 %define module numpy
 %define mname Numeric
 
-Summary:	Python numerical facilities 
+Summary:	Python numerical facilities
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
 Version:	20.3
