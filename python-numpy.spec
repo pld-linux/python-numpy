@@ -11,7 +11,7 @@ Patch0: LLNLPython8-fixbugs.patch
 Patch1: LLNLPython8-fixdirs.patch
 URL: http://www.python.org/topics/scicomp/numpy.html
 Icon: linux-python-numpy-icon.gif 
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Requires: python >= 1.5
 
 %description
@@ -38,7 +38,6 @@ Requires: python-numpy >= 1.5
 
 %description RNG
 RNG provides a random number object to Numerical Python.
-
 
 %prep
 %setup -n LLNLPython8/
