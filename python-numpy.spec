@@ -6,7 +6,7 @@ Summary:	Python numerical facilities
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
 Version:	23.6
-Release:	0.1
+Release:	0.2
 License:	distributable
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
@@ -15,7 +15,7 @@ Patch0:		%{name}-lite.patch
 URL:		http://www.pfdubois.com/numpy/
 BuildRequires:	python-devel >= 1:2.3
 BuildRequires:	rpm-pythonprov
-%pyrequires_eq	python
+%pyrequires_eq	python-libs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -30,7 +30,7 @@ wielowymiarowych.
 Summary:	C header files for numerical modules
 Summary(pl):	Pliki nag³ówkowe jêzyka C modu³ów numerycznych
 Group:		Development/Languages/Python
-%pyrequires_eq	python
+%pyrequires_eq	python-devel
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
@@ -43,7 +43,7 @@ Pliki nag³ówkowe jêzyka C modu³ów numerycznych.
 Summary:	Interface to the FFTPACK FORTRAN library
 Summary(pl):	Interfejs do biblioteki FFTPACK jêzyka Fortran
 Group:		Libraries/Python
-%pyrequires_eq	python
+%pyrequires_eq	python-libs
 Requires:	%{name} = %{version}-%{release}
 
 %description FFT
@@ -62,7 +62,7 @@ Fouriera na liczba rzeczywistych i zespolonych.
 #Summary:	Implementation of PEP 0242 - precision and range control of numeric computations
 #Summary(pl):	Implementacja propozycji PEP 0242 - mo¿liwo¶æ kontrolowania precyzji i zakresu obliczeñ numerycznych
 #Group:		Libraries/Python
-#%pyrequires_eq	python
+#%pyrequires_eq	python-libs
 #Requires:	%{name} = %{version}-%{release}
 #
 #%description kinds
@@ -85,7 +85,7 @@ Fouriera na liczba rzeczywistych i zespolonych.
 Summary:	MA - a facility for dealing with masked arrays
 Summary(pl):	Modu³ do obs³ugi macierzy niepe³nych
 Group:		Libraries/Python
-%pyrequires_eq	python
+%pyrequires_eq	python-libs
 Requires:	%{name} = %{version}-%{release}
 
 %description MA
@@ -103,7 +103,7 @@ do operowania na tego typu macierzach.
 #Summary:	Property class implementation for Python
 #Summary(pl):	Implementacja klasy z w³a¶ciwo¶ciami dla jêzyka Python
 #Group:		Libraries/Python
-#%pyrequires_eq	python
+#%pyrequires_eq	python-libs
 #Requires:	%{name} = %{version}-%{release}
 #
 #%description Properties
@@ -123,7 +123,7 @@ do operowania na tego typu macierzach.
 Summary:	Random Number Generator Object for NumPy
 Summary(pl):	Obiekt generatora liczb losowych dla modu³u NumPy
 Group:		Libraries/Python
-%pyrequires_eq	python
+%pyrequires_eq	python-libs
 Requires:	%{name} = %{version}-%{release}
 
 %description RNG
