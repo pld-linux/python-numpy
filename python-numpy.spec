@@ -6,12 +6,12 @@
 Summary:	Python numerical facilities
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
-Version:	23.0
+Version:	23.1
 Release:	0.1
 License:	distributable
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
-# Source0-md5:	2f8c3c5d0703ce12f55f04f43d1a9ab3
+# Source0-md5:	5cd24ed20627f5cbc822a2bed8ff27e9
 URL:		http://www.pfdubois.com/numpy/
 BuildRequires:	python-devel >= 2.3
 BuildRequires:	rpm-pythonprov
