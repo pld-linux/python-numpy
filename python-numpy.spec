@@ -10,7 +10,7 @@ Version:	21.0
 Release:	4
 License:	distributable
 Group:		Libraries/Python
-Source0:	http://prdownloads.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
 URL:		http://www.pfdubois.com/numpy/
 BuildRequires:	python-devel >= 2.2.1
 BuildRequires:	rpm-pythonprov
