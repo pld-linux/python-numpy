@@ -2,10 +2,11 @@
 %define module numpy
 %define mname Numeric
 
+%include	/usr/lib/rpm/macros.python
 Summary:	Python numerical facilities 
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
-Version:	20.2.0
+Version:	20.3
 Release:	1
 License:	distributable
 Group:		Development/Languages/Python
@@ -17,8 +18,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %requires_eq	python
 BuildRequires:	python-devel >= 1.5
 BuildRequires:	rpm-pythonprov
-
-%include /usr/lib/rpm/macros.python
 
 %description
 NumPy is a collection of extension modules to provide high-performance
@@ -71,7 +70,6 @@ Group(de):	Entwicklung/Sprachen/Python
 Group(pl):	Programowanie/Jêzyki/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
-Requires:	%{name}-kinds = %{version}
 
 %description kinds
 This is implementation of PEP 0242. PEP's abstract follows:
@@ -150,8 +148,8 @@ jêzyka Python.
 %setup -q -n %{mname}-%{version}
 
 %build
-CFLAGS="%{rpmcflags}"
-export CFLAGS
+CC="%{__cc}"; export CC
+CFLAGS="%{rpmcflags}"; export CFLAGS
 python setup_all.py build
 
 %install
