@@ -8,6 +8,7 @@
 %define python_compile python -c "import compileall; import sys; compileall.compile_dir(sys.argv[1])"
 
 Summary:	Python numerical facilities 
+Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
 Version:	20.1.0a3
 Release:	1
@@ -25,15 +26,23 @@ BuildRequires:	python-devel >= 1.5
 NumPy is a collection of extension modules to provide high-performance
 multidimensional numeric arrays to the Python programming language.
 
+%description -l pl
+Pakiet zawiera wydajne modu³y dla jêzyka Python do obliczeñ numerycznych
+na wielowymiarowych macierzach.
+
 %package devel
-Summary:	N/A
+Summary:	C header files for numerical modules
+Summary(pl):	Pliki nag³ówkowe jêzyka C modu³ów numerycznych
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
 Group(pl):	Programowanie/Jêzyki/Python
 Requires:	%{name} = %{version}
 
 %description devel
-N/A
+C header files for numerical modules.
+
+%description devel -l pl
+Pliki nag³ówkowe jêzyka C modu³ów numerycznych
 
 %package FFT
 Summary:	N/A
