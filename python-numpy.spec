@@ -7,9 +7,9 @@ Summary:	Python numerical facilities
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
 Version:	20.3
-Release:	2
+Release:	3
 License:	distributable
-Group:		Development/Languages/Python
+Group:		Libraries/Python
 Source0:	http://prdownloads.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
 URL:		http://www.pfdubois.com/numpy/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -41,7 +41,7 @@ Pliki nag³ówkowe jêzyka C modu³ów numerycznych.
 %package FFT
 Summary:	Interface to the FFTPACK FORTRAN library
 Summary(pl):	Interfejs do biblioteki FFTPACK jêzyka Fortran
-Group:		Development/Languages/Python
+Group:		Libraries/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -59,7 +59,7 @@ Fouriera na liczba rzeczywistych i zespolonych.
 %package kinds
 Summary:	Implementation of PEP 0242 - precision and range control of numeric computations
 Summary(pl):	Implementacja propozycji PEP 0242 - mo¿liwo¶æ kontrolowania precyzji i zakresu obliczeñ numerycznych
-Group:		Development/Languages/Python
+Group:		Libraries/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -82,7 +82,7 @@ kompatybilny wstecz z istniej±cymi programami.
 %package MA
 Summary:	MA - a facility for dealing with masked arrays
 Summary(pl):	Modu³ do obs³ugi macierzy niepe³nych
-Group:		Development/Languages/Python
+Group:		Libraries/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -99,7 +99,7 @@ do operowania na tego typu macierzach.
 %package Properties
 Summary:	Property class implementation for Python
 Summary(pl):	Implementacja klasy z w³a¶ciwo¶ciami dla jêzyka Python
-Group:		Development/Languages/Python
+Group:		Libraries/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
@@ -119,7 +119,7 @@ u¿ywany w celu ustalenia jakiego¶ atrybutu jako tylko do odczytu.
 %package RNG
 Summary:	Random Number Generator Object for NumPy
 Summary:	Obiekt generatora liczb losowych dla modu³u NumPy
-Group:		Development/Languages/Python
+Group:		Libraries/Python
 %requires_eq	python
 Requires:	%{name} = %{version}
 
