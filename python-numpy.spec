@@ -16,6 +16,7 @@ URL:		http://www.pfdubois.com/numpy/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %requires_eq	python
 BuildRequires:	python-devel >= 1.5
+BuildRequires:	rpm-pythonprov
 
 %include /usr/lib/rpm/macros.python
 
