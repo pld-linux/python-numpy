@@ -118,7 +118,7 @@ u¿ywany w celu ustalenia jakiego¶ atrybutu jako tylko do odczytu.
 
 %package RNG
 Summary:	Random Number Generator Object for NumPy
-Summary:	Obiekt generatora liczb losowych dla modu³u NumPy
+Summary(pl):	Obiekt generatora liczb losowych dla modu³u NumPy
 Group:		Libraries/Python
 %pyrequires_eq	python
 Requires:	%{name} = %{version}
