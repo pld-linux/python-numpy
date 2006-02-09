@@ -4,13 +4,13 @@
 Summary:	Python numerical facilities
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
-Version:	23.7
-Release:	2
+Version:	24.2
+Release:	1
 License:	distributable
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
-# Source0-md5:	8054781c58ae9cf6fe498316860b5ea8
-Patch0:		%{name}-lite.patch
+# Source0-md5:	2ae672656e06716a149acb048cca3093
+#Patch0:		%{name}-lite.patch
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	python-devel >= 1:2.3
 %pyrequires_eq	python-libs
@@ -133,7 +133,7 @@ jêzyka Python.
 
 %prep
 %setup -q -n %{mname}-%{version}
-%patch0 -p1
+#%patch0 -p1
 
 %build
 CC="%{__cc}"; export CC
@@ -157,7 +157,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/%{mname}
 %{py_sitedir}/%{mname}.pth
 %attr(755,root,root) %{py_sitedir}/%{mname}/*.so
+%{py_sitedir}/%{mname}/Numeric_headers/__init__.*
 %{py_sitedir}/%{mname}/*.py[co]
+%{py_sitedir}/%{mname}/*.py
 
 %files devel
 %defattr(644,root,root,755)
@@ -168,6 +170,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/%{mname}/FFT
 %attr(755,root,root) %{py_sitedir}/%{mname}/FFT/*.so
 %{py_sitedir}/%{mname}/FFT/*.py[co]
+%{py_sitedir}/%{mname}/FFT/*.py
 
 #%files kinds
 #%defattr(644,root,root,755)
@@ -179,6 +182,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/%{mname}/MA
 %{py_sitedir}/%{mname}/MA/*.py[co]
+%{py_sitedir}/%{mname}/MA/*.py
 
 #%files Properties
 #%defattr(644,root,root,755)
@@ -190,3 +194,4 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/%{mname}/RNG
 %attr(755,root,root) %{py_sitedir}/%{mname}/RNG/*.so
 %{py_sitedir}/%{mname}/RNG/*.py[co]
+%{py_sitedir}/%{mname}/RNG/*.py
