@@ -10,7 +10,6 @@ License:	distributable
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
 # Source0-md5:	2ae672656e06716a149acb048cca3093
-#Patch0:		%{name}-lite.patch
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	python-devel >= 1:2.3
 %pyrequires_eq	python-libs
@@ -133,7 +132,6 @@ jêzyka Python.
 
 %prep
 %setup -q -n %{mname}-%{version}
-#%patch0 -p1
 
 %build
 CC="%{__cc}"; export CC
