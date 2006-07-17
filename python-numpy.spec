@@ -1,18 +1,25 @@
 %define		module	numpy
-%define		mname	Numeric
 
 Summary:	Python numerical facilities
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
-Version:	24.2
+Version:	0.9.8
 Release:	1
+Epoch:		1
 License:	distributable
 Group:		Libraries/Python
-Source0:	http://dl.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
-# Source0-md5:	2ae672656e06716a149acb048cca3093
+Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}.tar.gz
+# Source0-md5:	ca528d2b460a6567d70bb6bdf0dc1805
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	python-devel >= 1:2.3
 %pyrequires_eq	python-libs
+# -- dropped some time ago
+Obsoletes:	python-numpy-Properties
+# -- dropped some time ago, should have been released as separate package, but wasn't
+Obsoletes:	python-numpy-kinds
+# -- dropped during Numeric->numpy transition
+Obsoletes:	python-numpy-MA
+Obsoletes:	python-numpy-RNG
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -28,7 +35,7 @@ Summary:	C header files for numerical modules
 Summary(pl):	Pliki nag³ówkowe jêzyka C modu³ów numerycznych
 Group:		Development/Languages/Python
 %pyrequires_eq	python-devel
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
 C header files for numerical modules.
@@ -41,7 +48,7 @@ Summary:	Interface to the FFTPACK FORTRAN library
 Summary(pl):	Interfejs do biblioteki FFTPACK jêzyka Fortran
 Group:		Libraries/Python
 %pyrequires_eq	python-libs
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description FFT
 The FFT.py module provides a simple interface to the FFTPACK FORTRAN
@@ -54,84 +61,8 @@ Fortran. Ta biblioteka o wysokich mo¿liwo¶ciach jest standardowo
 u¿ywana do prowadzenia obliczeñ za pomoc± dyskretnej transformaty
 Fouriera na liczba rzeczywistych i zespolonych.
 
-# -- will be released as separate package
-#%package kinds
-#Summary:	Implementation of PEP 0242 - precision and range control of numeric computations
-#Summary(pl):	Implementacja propozycji PEP 0242 - mo¿liwo¶æ kontrolowania precyzji i zakresu obliczeñ numerycznych
-#Group:		Libraries/Python
-#%pyrequires_eq	python-libs
-#Requires:	%{name} = %{version}-%{release}
-#
-#%description kinds
-#This is implementation of PEP 0242. PEP's abstract follows:
-#
-#This proposal gives the user optional control over the precision and
-#range of numeric computations so that a computation can be written
-#once and run anywhere with at least the desired precision and range.
-#It is backward compatible with existing code.
-#
-#%description kinds -l pl
-#Modu³ zawiera implementacjê propozycji PEP 0242. Oto jej streszczenie.
-#
-#Propozycja ta umo¿liwia u¿ytkownikowi, opcjonalnie, kontrolê nad
-#precyzj± i zakresem obliczeñ numerycznych. Dziêki temu raz napisane
-#obliczenia mog± byæ uruchamiane na dowolnej maszynie. Mechanizm jest
-#kompatybilny wstecz z istniej±cymi programami.
-
-%package MA
-Summary:	MA - a facility for dealing with masked arrays
-Summary(pl):	Modu³ do obs³ugi macierzy niepe³nych
-Group:		Libraries/Python
-%pyrequires_eq	python-libs
-Requires:	%{name} = %{version}-%{release}
-
-%description MA
-Masked arrays are arrays that may have missing or invalid entries.
-Module MA provides a work-alike replacement for Numeric that supports
-data arrays with masks.
-
-%description MA -l pl
-Macierze niepe³ne s± to macierze, którym mo¿e brakowaæ lub mog±
-zawieraæ niepoprawne warto¶ci. Modu³ MA zawiera odpowiednie narzêdzia
-do operowania na tego typu macierzach.
-
-# -- removed(?)
-#%package Properties
-#Summary:	Property class implementation for Python
-#Summary(pl):	Implementacja klasy z w³a¶ciwo¶ciami dla jêzyka Python
-#Group:		Libraries/Python
-#%pyrequires_eq	python-libs
-#Requires:	%{name} = %{version}-%{release}
-#
-#%description Properties
-#PropertiedClass is a mixin class that can be used to emulate
-#properties in a Python class. A property is an attribute whose read,
-#write, or deleting requires special handling. It is also possible to
-#use this facility to prevent the writing or deleting of a property.
-#
-#%description Properties -l pl
-#PropertiedClass jest klas±, która mo¿e byæ u¿yta do emulacji
-#w³a¶ciwo¶ci w klasach jêzyka Python. W³a¶ciwo¶æ klasy jest atrybutem,
-#którego czytanie, przypisywanie mu warto¶ci, czy te¿ jego usuwanie
-#powinno byæ traktowane w sposób specjalny. Mechanizm ten mo¿e byæ te¿
-#u¿ywany w celu ustalenia jakiego¶ atrybutu jako tylko do odczytu.
-
-%package RNG
-Summary:	Random Number Generator Object for NumPy
-Summary(pl):	Obiekt generatora liczb losowych dla modu³u NumPy
-Group:		Libraries/Python
-%pyrequires_eq	python-libs
-Requires:	%{name} = %{version}-%{release}
-
-%description RNG
-RNG provides a random number object to Numerical Python.
-
-%description RNG -l pl
-Modu³ ten zawiera implementacjê obiektu generatora liczb losowych dla
-jêzyka Python.
-
 %prep
-%setup -q -n %{mname}-%{version}
+%setup -q -n %{module}-%{version}
 
 %build
 CC="%{__cc}"; export CC
@@ -146,51 +77,51 @@ python setup.py install \
 
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
 %py_comp $RPM_BUILD_ROOT%{py_sitedir}
+%py_postclean
+
+rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/{*.txt,COMPATIBILITY,scipy_compatibility,doc}
+rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/*/{tests,docs}
+# already in f2py package
+rm -rf $RPM_BUILD_ROOT{%{_bindir}/f2py,%{py_sitedir}/%{module}/f2py/f2py.1}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{py_sitedir}/%{mname}.pth
-%dir %{py_sitedir}/%{mname}
-%attr(755,root,root) %{py_sitedir}/%{mname}/*.so
-%dir %{py_sitedir}/%{mname}/Numeric_headers
-%{py_sitedir}/%{mname}/Numeric_headers/__init__.*
-%{py_sitedir}/%{mname}/*.py[co]
-%{py_sitedir}/%{mname}/*.py
+%dir %{py_sitedir}/%{module}
+%{py_sitedir}/%{module}/*.py[co]
+%dir %{py_sitedir}/%{module}/core
+%{py_sitedir}/%{module}/core/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/core/*.so
+%dir %{py_sitedir}/%{module}/distutils
+%{py_sitedir}/%{module}/distutils/*.py[co]
+%dir %{py_sitedir}/%{module}/distutils/command
+%{py_sitedir}/%{module}/distutils/command/*.py[co]
+%dir %{py_sitedir}/%{module}/distutils/fcompiler
+%{py_sitedir}/%{module}/distutils/fcompiler/*.py[co]
+%dir %{py_sitedir}/%{module}/f2py
+%{py_sitedir}/%{module}/f2py/*.py[co]
+%{py_sitedir}/%{module}/f2py/src
+%dir %{py_sitedir}/%{module}/lib
+%{py_sitedir}/%{module}/lib/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/lib/*.so
+%dir %{py_sitedir}/%{module}/linalg
+%{py_sitedir}/%{module}/linalg/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/linalg/*.so
+%dir %{py_sitedir}/%{module}/random
+%{py_sitedir}/%{module}/random/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/random/*.so
+%dir %{py_sitedir}/%{module}/testing
+%{py_sitedir}/%{module}/testing/*.py[co]
 
 %files devel
 %defattr(644,root,root,755)
-%{py_incdir}/%{mname}
+%{py_sitedir}/%{module}/core/include
+%{py_sitedir}/%{module}/random/*.h
 
 %files FFT
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/%{mname}/FFT
-%attr(755,root,root) %{py_sitedir}/%{mname}/FFT/*.so
-%{py_sitedir}/%{mname}/FFT/*.py[co]
-%{py_sitedir}/%{mname}/FFT/*.py
-
-#%files kinds
-#%defattr(644,root,root,755)
-#%dir %{py_sitedir}/%{mname}/kinds
-#%attr(755,root,root) %{py_sitedir}/%{mname}/kinds/*.so
-#%{py_sitedir}/%{mname}/kinds/*.py[co]
-
-%files MA
-%defattr(644,root,root,755)
-%dir %{py_sitedir}/%{mname}/MA
-%{py_sitedir}/%{mname}/MA/*.py[co]
-%{py_sitedir}/%{mname}/MA/*.py
-
-#%files Properties
-#%defattr(644,root,root,755)
-#%dir %{py_sitedir}/%{mname}/PropertiedClasses
-#%{py_sitedir}/%{mname}/PropertiedClasses/*.py[co]
-
-%files RNG
-%defattr(644,root,root,755)
-%dir %{py_sitedir}/%{mname}/RNG
-%attr(755,root,root) %{py_sitedir}/%{mname}/RNG/*.so
-%{py_sitedir}/%{mname}/RNG/*.py[co]
-%{py_sitedir}/%{mname}/RNG/*.py
+%dir %{py_sitedir}/%{module}/dft
+%attr(755,root,root) %{py_sitedir}/%{module}/dft/*.so
+%{py_sitedir}/%{module}/dft/*.py[co]
