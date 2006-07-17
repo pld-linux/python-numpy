@@ -152,9 +152,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/%{mname}
 %{py_sitedir}/%{mname}.pth
+%dir %{py_sitedir}/%{mname}
 %attr(755,root,root) %{py_sitedir}/%{mname}/*.so
+%dir %{py_sitedir}/%{mname}/Numeric_headers
 %{py_sitedir}/%{mname}/Numeric_headers/__init__.*
 %{py_sitedir}/%{mname}/*.py[co]
 %{py_sitedir}/%{mname}/*.py
