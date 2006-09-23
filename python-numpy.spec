@@ -1,15 +1,20 @@
+#
+# TODO:
+#	- description for oldnumeric
+#
 %define		module	numpy
+%define		_rc1 rc1
 
 Summary:	Python numerical facilities
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
-Version:	0.9.8
-Release:	1
+Version:	1.0
+Release:	0.%{_rc1}.1
 Epoch:		1
 License:	distributable
 Group:		Libraries/Python
-Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}.tar.gz
-# Source0-md5:	ca528d2b460a6567d70bb6bdf0dc1805
+Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}%{_rc1}.tar.gz
+# Source0-md5:	b8cd486ee334520047f9a35454dad94a
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	python-devel >= 1:2.3
 %pyrequires_eq	python-libs
@@ -61,8 +66,66 @@ Fortran. Ta biblioteka o wysokich mo¿liwo¶ciach jest standardowo
 u¿ywana do prowadzenia obliczeñ za pomoc± dyskretnej transformaty
 Fouriera na liczba rzeczywistych i zespolonych.
 
+%package numarray
+Summary:        Array manipulation and computations for python
+Summary(pl):    Operacje i obliczenia na tablicach dla Pythona
+Group:          Development/Languages/Python
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description numarray
+Numarray provides array manipulation and computational capabilities
+similar to those found in IDL, Matlab, or Octave. Using numarray, it
+is possible to write many efficient numerical data processing
+applications directly in Python without using any C, C++ or Fortran
+code (as well as doing such analysis interactively within Python or
+PyRAF). For algorithms that are not well suited for efficient
+computation using array facilities it is possible to write C functions
+(and eventually Fortran) that can read and write numarray arrays that
+can be called from Python.
+
+Numarray is a re-implementation of an older Python array module called
+Numeric. In general its interface is very similar. It is mostly
+backward compatible and will be becoming more so in future releases.
+
+%description numarray -l pl
+Numarray zapewnia narzêdzia do operacji oraz obliczeñ na tablicach
+podobne do tych, jakie zapewniaj± IDL, Matlab czy Octabe. U¿ywaj±c
+numarray mo¿liwe jest stworzenie bezpo¶rednio w Pythonie, nie u¿ywaj±c
+wstawek C, C++ czy Fortranowych, wielu wydajnych aplikacji do
+przetwarzania danych numerycznych. Dla algorytmów, które nie pracuj±
+wydajnie z tablicami, mo¿liwe jest napisanie funkcji C, które mog±
+czytaæ i zapisywaæ tablice numarray, i które mog± byæ wywo³ywane z
+poziomu Pythona.
+
+Numarray jest ponown± implementacj± starszego modu³u Pythona -
+Numeric. Interfejsy tych modu³ów s± do siebie bardzo podobne. Numarray
+jest w wiêkszo¶ci przypadków kompatybilny wstecz, a sytuacja poprawi
+siê w nowszych wersjach.
+
+%package numarray-devel
+Summary:        Header files for python-numarray
+Summary(pl):    Pliki nag³ówkowe dla python-numarray
+Group:          Development/Libraries
+
+%description numarray-devel
+Header files for python-numarray.
+
+%description numarray-devel -l pl
+Pliki nag³ówkowe dla python-numarray.
+
+%package oldnumeric
+Summary:        Old numeric packages
+Summary(pl):    Old numeric packages
+Group:          Libraries/Python
+
+%description oldnumeric
+Old numeric packages.
+
+%description oldnumeric -l pl
+Old numeric packages.
+
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{module}-%{version}%{_rc1}
 
 %build
 CC="%{__cc}"; export CC
@@ -96,6 +159,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/%{module}/core/*.so
 %dir %{py_sitedir}/%{module}/distutils
 %{py_sitedir}/%{module}/distutils/*.py[co]
+%{py_sitedir}/%{module}/distutils/site.cfg
 %dir %{py_sitedir}/%{module}/distutils/command
 %{py_sitedir}/%{module}/distutils/command/*.py[co]
 %dir %{py_sitedir}/%{module}/distutils/fcompiler
@@ -122,6 +186,22 @@ rm -rf $RPM_BUILD_ROOT
 
 %files FFT
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/%{module}/dft
-%attr(755,root,root) %{py_sitedir}/%{module}/dft/*.so
-%{py_sitedir}/%{module}/dft/*.py[co]
+%dir %{py_sitedir}/%{module}/fft
+%attr(755,root,root) %{py_sitedir}/%{module}/fft/*.so
+%{py_sitedir}/%{module}/fft/*.py[co]
+
+%files numarray
+%defattr(644,root,root,755)
+%attr(755,root,root) %{py_sitedir}/%{module}/numarray/*.so
+%dir %{py_sitedir}/%{module}/numarray
+%{py_sitedir}/%{module}/numarray/*.py[co]
+
+%files numarray-devel
+%defattr(644,root,root,755)
+%dir %{py_sitedir}/%{module}/numarray/numpy
+%{py_sitedir}/%{module}/numarray/numpy/*
+
+%files oldnumeric
+%defattr(644,root,root,755)
+%dir %{py_sitedir}/%{module}/oldnumeric
+%{py_sitedir}/%{module}/oldnumeric/*
