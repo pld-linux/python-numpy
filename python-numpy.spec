@@ -9,7 +9,7 @@ Summary:	Python numerical facilities
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
 Version:	1.0
-Release:	0.%{_rc1}.1
+Release:	0.%{_rc1}.2
 Epoch:		1
 License:	distributable
 Group:		Libraries/Python
