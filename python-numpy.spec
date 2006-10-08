@@ -67,9 +67,9 @@ u¿ywana do prowadzenia obliczeñ za pomoc± dyskretnej transformaty
 Fouriera na liczba rzeczywistych i zespolonych.
 
 %package numarray
-Summary:        Array manipulation and computations for python
-Summary(pl):    Operacje i obliczenia na tablicach dla Pythona
-Group:          Development/Languages/Python
+Summary:	Array manipulation and computations for python
+Summary(pl):	Operacje i obliczenia na tablicach dla Pythona
+Group:		Development/Languages/Python
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description numarray
@@ -89,9 +89,9 @@ backward compatible and will be becoming more so in future releases.
 
 %description numarray -l pl
 Numarray zapewnia narzêdzia do operacji oraz obliczeñ na tablicach
-podobne do tych, jakie zapewniaj± IDL, Matlab czy Octabe. U¿ywaj±c
+podobne do tych, jakie zapewniaj± IDL, Matlab czy Octave. U¿ywaj±c
 numarray mo¿liwe jest stworzenie bezpo¶rednio w Pythonie, nie u¿ywaj±c
-wstawek C, C++ czy Fortranowych, wielu wydajnych aplikacji do
+wstawek C, C++ czy fortranowych, wielu wydajnych aplikacji do
 przetwarzania danych numerycznych. Dla algorytmów, które nie pracuj±
 wydajnie z tablicami, mo¿liwe jest napisanie funkcji C, które mog±
 czytaæ i zapisywaæ tablice numarray, i które mog± byæ wywo³ywane z
@@ -103,9 +103,11 @@ jest w wiêkszo¶ci przypadków kompatybilny wstecz, a sytuacja poprawi
 siê w nowszych wersjach.
 
 %package numarray-devel
-Summary:        Header files for python-numarray
-Summary(pl):    Pliki nag³ówkowe dla python-numarray
-Group:          Development/Libraries
+Summary:	Header files for python-numarray
+Summary(pl):	Pliki nag³ówkowe dla python-numarray
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+Requires:	%{name}-numarray = %{epoch}:%{version}-%{release}
 
 %description numarray-devel
 Header files for python-numarray.
@@ -114,15 +116,15 @@ Header files for python-numarray.
 Pliki nag³ówkowe dla python-numarray.
 
 %package oldnumeric
-Summary:        Old numeric packages
-Summary(pl):    Old numeric packages
+Summary:	Old numeric packages
+Summary(pl):	Stare pakiety numeric
 Group:          Libraries/Python
 
 %description oldnumeric
 Old numeric packages.
 
 %description oldnumeric -l pl
-Old numeric packages.
+Stare pakiety numeric.
 
 %prep
 %setup -q -n %{module}-%{version}%{_rc1}
@@ -192,8 +194,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files numarray
 %defattr(644,root,root,755)
-%attr(755,root,root) %{py_sitedir}/%{module}/numarray/*.so
 %dir %{py_sitedir}/%{module}/numarray
+%attr(755,root,root) %{py_sitedir}/%{module}/numarray/*.so
 %{py_sitedir}/%{module}/numarray/*.py[co]
 
 %files numarray-devel
