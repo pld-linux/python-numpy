@@ -118,7 +118,7 @@ Pliki nag³ówkowe dla python-numarray.
 %package oldnumeric
 Summary:	Old numeric packages
 Summary(pl):	Stare pakiety numeric
-Group:          Libraries/Python
+Group:		Libraries/Python
 
 %description oldnumeric
 Old numeric packages.
