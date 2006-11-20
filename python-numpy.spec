@@ -3,18 +3,17 @@
 #	- description for oldnumeric
 #
 %define		module	numpy
-%define		_rc1 rc1
 
 Summary:	Python numerical facilities
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
 Version:	1.0
-Release:	0.%{_rc1}.2
+Release:	1
 Epoch:		1
 License:	distributable
 Group:		Libraries/Python
-Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}%{_rc1}.tar.gz
-# Source0-md5:	b8cd486ee334520047f9a35454dad94a
+Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}.tar.gz
+# Source0-md5:	47dd0daa82e7b3f0fe74b969b388d7b3
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	python-devel >= 1:2.3
 %pyrequires_eq	python-libs
@@ -127,7 +126,7 @@ Old numeric packages.
 Stare pakiety numeric.
 
 %prep
-%setup -q -n %{module}-%{version}%{_rc1}
+%setup -q -n %{module}-%{version}
 
 %build
 CC="%{__cc}"; export CC
