@@ -7,13 +7,13 @@
 Summary:	Python numerical facilities
 Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
 Name:		python-%{module}
-Version:	1.0
-Release:	1
+Version:	1.0.1
+Release:	0.1
 Epoch:		1
 License:	distributable
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}.tar.gz
-# Source0-md5:	47dd0daa82e7b3f0fe74b969b388d7b3
+# Source0-md5:	13a29244cbe03e0d45e56d8d90ecb55d
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	python-devel >= 1:2.3
 %pyrequires_eq	python-libs
@@ -24,6 +24,8 @@ Obsoletes:	python-numpy-kinds
 # -- dropped during Numeric->numpy transition
 Obsoletes:	python-numpy-MA
 Obsoletes:	python-numpy-RNG
+Provides:	f2py
+Provides:	numarray
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -125,6 +127,18 @@ Old numeric packages.
 %description oldnumeric -l pl
 Stare pakiety numeric.
 
+%package -n f2py
+Summary:	Fortran to Python interface generator
+Summary(pl):	Generator interfejsów z Fortranu do Pythona
+Group:		Libraries/Python
+Requires:	python-%{module}
+
+%description -n f2py
+Fortran to Python interface generator.
+
+%description -n f2py -l pl
+Generator interfejsów z Fortranu do Pythona.
+
 %prep
 %setup -q -n %{module}-%{version}
 
@@ -146,7 +160,7 @@ python setup.py install \
 rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/{*.txt,COMPATIBILITY,scipy_compatibility,doc}
 rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/*/{tests,docs}
 # already in f2py package
-rm -rf $RPM_BUILD_ROOT{%{_bindir}/f2py,%{py_sitedir}/%{module}/f2py/f2py.1}
+rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/f2py/f2py.1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -155,6 +169,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/%{module}
 %{py_sitedir}/%{module}/*.py[co]
+%{py_sitedir}/%{module}/tests
 %dir %{py_sitedir}/%{module}/core
 %{py_sitedir}/%{module}/core/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/core/*.so
@@ -165,9 +180,6 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/%{module}/distutils/command/*.py[co]
 %dir %{py_sitedir}/%{module}/distutils/fcompiler
 %{py_sitedir}/%{module}/distutils/fcompiler/*.py[co]
-%dir %{py_sitedir}/%{module}/f2py
-%{py_sitedir}/%{module}/f2py/*.py[co]
-%{py_sitedir}/%{module}/f2py/src
 %dir %{py_sitedir}/%{module}/lib
 %{py_sitedir}/%{module}/lib/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/lib/*.so
@@ -206,3 +218,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/%{module}/oldnumeric
 %{py_sitedir}/%{module}/oldnumeric/*
+
+%files -n f2py
+%defattr(644,root,root,755)
+%attr(744,root,root) %{_bindir}/f2py
+%dir %{py_sitedir}/%{module}/f2py
+%{py_sitedir}/%{module}/f2py/*.py[co]
+%{py_sitedir}/%{module}/f2py/src
+%{py_sitedir}/%{module}/f2py/lib
