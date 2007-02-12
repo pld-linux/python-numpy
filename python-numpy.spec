@@ -5,7 +5,7 @@
 %define		module	numpy
 
 Summary:	Python numerical facilities
-Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
+Summary(pl.UTF-8):   ModuÅ‚y do obliczeÅ„ numerycznych dla jÄ™zyka Python
 Name:		python-%{module}
 Version:	1.0.1
 Release:	0.1
@@ -32,13 +32,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 NumPy is a collection of extension modules to provide high-performance
 multidimensional numeric arrays to the Python programming language.
 
-%description -l pl
-Pakiet umo¿liwia wydajne obliczenia numeryczne na macierzach
+%description -l pl.UTF-8
+Pakiet umoÅ¼liwia wydajne obliczenia numeryczne na macierzach
 wielowymiarowych.
 
 %package devel
 Summary:	C header files for numerical modules
-Summary(pl):	Pliki nag³ówkowe jêzyka C modu³ów numerycznych
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe jÄ™zyka C moduÅ‚Ã³w numerycznych
 Group:		Development/Languages/Python
 %pyrequires_eq	python-devel
 Requires:	%{name} = %{epoch}:%{version}-%{release}
@@ -46,12 +46,12 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 %description devel
 C header files for numerical modules.
 
-%description devel -l pl
-Pliki nag³ówkowe jêzyka C modu³ów numerycznych.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe jÄ™zyka C moduÅ‚Ã³w numerycznych.
 
 %package FFT
 Summary:	Interface to the FFTPACK FORTRAN library
-Summary(pl):	Interfejs do biblioteki FFTPACK jêzyka Fortran
+Summary(pl.UTF-8):   Interfejs do biblioteki FFTPACK jÄ™zyka Fortran
 Group:		Libraries/Python
 %pyrequires_eq	python-libs
 Requires:	%{name} = %{epoch}:%{version}-%{release}
@@ -61,15 +61,15 @@ The FFT.py module provides a simple interface to the FFTPACK FORTRAN
 library, which is a powerful standard library for doing fast Fourier
 transforms of real and complex data sets.
 
-%description FFT -l pl
-Modu³ FFT zawiera prosty interfejs do biblioteki FFTPACK jêzyka
-Fortran. Ta biblioteka o wysokich mo¿liwo¶ciach jest standardowo
-u¿ywana do prowadzenia obliczeñ za pomoc± dyskretnej transformaty
+%description FFT -l pl.UTF-8
+ModuÅ‚ FFT zawiera prosty interfejs do biblioteki FFTPACK jÄ™zyka
+Fortran. Ta biblioteka o wysokich moÅ¼liwoÅ›ciach jest standardowo
+uÅ¼ywana do prowadzenia obliczeÅ„ za pomocÄ… dyskretnej transformaty
 Fouriera na liczba rzeczywistych i zespolonych.
 
 %package numarray
 Summary:	Array manipulation and computations for python
-Summary(pl):	Operacje i obliczenia na tablicach dla Pythona
+Summary(pl.UTF-8):   Operacje i obliczenia na tablicach dla Pythona
 Group:		Development/Languages/Python
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -88,24 +88,24 @@ Numarray is a re-implementation of an older Python array module called
 Numeric. In general its interface is very similar. It is mostly
 backward compatible and will be becoming more so in future releases.
 
-%description numarray -l pl
-Numarray zapewnia narzêdzia do operacji oraz obliczeñ na tablicach
-podobne do tych, jakie zapewniaj± IDL, Matlab czy Octave. U¿ywaj±c
-numarray mo¿liwe jest stworzenie bezpo¶rednio w Pythonie, nie u¿ywaj±c
+%description numarray -l pl.UTF-8
+Numarray zapewnia narzÄ™dzia do operacji oraz obliczeÅ„ na tablicach
+podobne do tych, jakie zapewniajÄ… IDL, Matlab czy Octave. UÅ¼ywajÄ…c
+numarray moÅ¼liwe jest stworzenie bezpoÅ›rednio w Pythonie, nie uÅ¼ywajÄ…c
 wstawek C, C++ czy fortranowych, wielu wydajnych aplikacji do
-przetwarzania danych numerycznych. Dla algorytmów, które nie pracuj±
-wydajnie z tablicami, mo¿liwe jest napisanie funkcji C, które mog±
-czytaæ i zapisywaæ tablice numarray, i które mog± byæ wywo³ywane z
+przetwarzania danych numerycznych. Dla algorytmÃ³w, ktÃ³re nie pracujÄ…
+wydajnie z tablicami, moÅ¼liwe jest napisanie funkcji C, ktÃ³re mogÄ…
+czytaÄ‡ i zapisywaÄ‡ tablice numarray, i ktÃ³re mogÄ… byÄ‡ wywoÅ‚ywane z
 poziomu Pythona.
 
-Numarray jest ponown± implementacj± starszego modu³u Pythona -
-Numeric. Interfejsy tych modu³ów s± do siebie bardzo podobne. Numarray
-jest w wiêkszo¶ci przypadków kompatybilny wstecz, a sytuacja poprawi
-siê w nowszych wersjach.
+Numarray jest ponownÄ… implementacjÄ… starszego moduÅ‚u Pythona -
+Numeric. Interfejsy tych moduÅ‚Ã³w sÄ… do siebie bardzo podobne. Numarray
+jest w wiÄ™kszoÅ›ci przypadkÃ³w kompatybilny wstecz, a sytuacja poprawi
+siÄ™ w nowszych wersjach.
 
 %package numarray-devel
 Summary:	Header files for python-numarray
-Summary(pl):	Pliki nag³ówkowe dla python-numarray
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe dla python-numarray
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 Requires:	%{name}-numarray = %{epoch}:%{version}-%{release}
@@ -113,31 +113,31 @@ Requires:	%{name}-numarray = %{epoch}:%{version}-%{release}
 %description numarray-devel
 Header files for python-numarray.
 
-%description numarray-devel -l pl
-Pliki nag³ówkowe dla python-numarray.
+%description numarray-devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe dla python-numarray.
 
 %package oldnumeric
 Summary:	Old numeric packages
-Summary(pl):	Stare pakiety numeric
+Summary(pl.UTF-8):   Stare pakiety numeric
 Group:		Libraries/Python
 
 %description oldnumeric
 Old numeric packages.
 
-%description oldnumeric -l pl
+%description oldnumeric -l pl.UTF-8
 Stare pakiety numeric.
 
 %package -n f2py
 Summary:	Fortran to Python interface generator
-Summary(pl):	Generator interfejsów z Fortranu do Pythona
+Summary(pl.UTF-8):   Generator interfejsÃ³w z Fortranu do Pythona
 Group:		Libraries/Python
 Requires:	python-%{module}
 
 %description -n f2py
 Fortran to Python interface generator.
 
-%description -n f2py -l pl
-Generator interfejsów z Fortranu do Pythona.
+%description -n f2py -l pl.UTF-8
+Generator interfejsÃ³w z Fortranu do Pythona.
 
 %prep
 %setup -q -n %{module}-%{version}
