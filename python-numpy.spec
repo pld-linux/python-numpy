@@ -5,7 +5,7 @@
 %define		module	numpy
 
 Summary:	Python numerical facilities
-Summary(pl.UTF-8):   Moduły do obliczeń numerycznych dla języka Python
+Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python
 Name:		python-%{module}
 Version:	1.0.1
 Release:	0.1
@@ -38,7 +38,7 @@ wielowymiarowych.
 
 %package devel
 Summary:	C header files for numerical modules
-Summary(pl.UTF-8):   Pliki nagłówkowe języka C modułów numerycznych
+Summary(pl.UTF-8):	Pliki nagłówkowe języka C modułów numerycznych
 Group:		Development/Languages/Python
 %pyrequires_eq	python-devel
 Requires:	%{name} = %{epoch}:%{version}-%{release}
@@ -51,7 +51,7 @@ Pliki nagłówkowe języka C modułów numerycznych.
 
 %package FFT
 Summary:	Interface to the FFTPACK FORTRAN library
-Summary(pl.UTF-8):   Interfejs do biblioteki FFTPACK języka Fortran
+Summary(pl.UTF-8):	Interfejs do biblioteki FFTPACK języka Fortran
 Group:		Libraries/Python
 %pyrequires_eq	python-libs
 Requires:	%{name} = %{epoch}:%{version}-%{release}
@@ -69,7 +69,7 @@ Fouriera na liczba rzeczywistych i zespolonych.
 
 %package numarray
 Summary:	Array manipulation and computations for python
-Summary(pl.UTF-8):   Operacje i obliczenia na tablicach dla Pythona
+Summary(pl.UTF-8):	Operacje i obliczenia na tablicach dla Pythona
 Group:		Development/Languages/Python
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -105,7 +105,7 @@ się w nowszych wersjach.
 
 %package numarray-devel
 Summary:	Header files for python-numarray
-Summary(pl.UTF-8):   Pliki nagłówkowe dla python-numarray
+Summary(pl.UTF-8):	Pliki nagłówkowe dla python-numarray
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 Requires:	%{name}-numarray = %{epoch}:%{version}-%{release}
@@ -118,7 +118,7 @@ Pliki nagłówkowe dla python-numarray.
 
 %package oldnumeric
 Summary:	Old numeric packages
-Summary(pl.UTF-8):   Stare pakiety numeric
+Summary(pl.UTF-8):	Stare pakiety numeric
 Group:		Libraries/Python
 
 %description oldnumeric
@@ -129,7 +129,7 @@ Stare pakiety numeric.
 
 %package -n f2py
 Summary:	Fortran to Python interface generator
-Summary(pl.UTF-8):   Generator interfejsów z Fortranu do Pythona
+Summary(pl.UTF-8):	Generator interfejsów z Fortranu do Pythona
 Group:		Libraries/Python
 Requires:	python-%{module}
 
