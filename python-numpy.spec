@@ -7,13 +7,13 @@
 Summary:	Python numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python
 Name:		python-%{module}
-Version:	1.0.1
+Version:	1.0.2
 Release:	0.1
 Epoch:		1
 License:	distributable
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}.tar.gz
-# Source0-md5:	13a29244cbe03e0d45e56d8d90ecb55d
+# Source0-md5:	8be83678056ae31bfe641d35bbc181f4
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	python-devel >= 1:2.3
 %pyrequires_eq	python-libs
@@ -175,7 +175,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/%{module}/core/*.so
 %dir %{py_sitedir}/%{module}/distutils
 %{py_sitedir}/%{module}/distutils/*.py[co]
-%{py_sitedir}/%{module}/distutils/site.cfg
+#%{py_sitedir}/%{module}/distutils/site.cfg
 %dir %{py_sitedir}/%{module}/distutils/command
 %{py_sitedir}/%{module}/distutils/command/*.py[co]
 %dir %{py_sitedir}/%{module}/distutils/fcompiler
