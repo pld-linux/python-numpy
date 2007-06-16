@@ -15,7 +15,7 @@ Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}-2.tar.gz
 # Source0-md5:	ff0ec1a633e426c8230b6c9d333cc1e6
 URL:		http://sourceforge.net/projects/numpy/
-BuildRequires:	python-devel >= 1:2.3
+BuildRequires:	python-devel >= 1:2.5
 %pyrequires_eq	python-libs
 # -- dropped some time ago
 Obsoletes:	python-numpy-Properties
@@ -25,7 +25,6 @@ Obsoletes:	python-numpy-kinds
 Obsoletes:	python-numpy-MA
 Obsoletes:	python-numpy-RNG
 Provides:	f2py
-Provides:	numarray
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -72,6 +71,7 @@ Summary:	Array manipulation and computations for python
 Summary(pl.UTF-8):	Operacje i obliczenia na tablicach dla Pythona
 Group:		Development/Languages/Python
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Provides:	numarray
 
 %description numarray
 Numarray provides array manipulation and computational capabilities
@@ -120,6 +120,7 @@ Pliki nagłówkowe dla python-numarray.
 Summary:	Old numeric packages
 Summary(pl.UTF-8):	Stare pakiety numeric
 Group:		Libraries/Python
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description oldnumeric
 Old numeric packages.
@@ -131,7 +132,7 @@ Stare pakiety numeric.
 Summary:	Fortran to Python interface generator
 Summary(pl.UTF-8):	Generator interfejsów z Fortranu do Pythona
 Group:		Libraries/Python
-Requires:	python-%{module}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description -n f2py
 Fortran to Python interface generator.
@@ -191,6 +192,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/%{module}/random/*.so
 %dir %{py_sitedir}/%{module}/testing
 %{py_sitedir}/%{module}/testing/*.py[co]
+%{py_sitedir}/numpy-*.egg-info
 
 %files devel
 %defattr(644,root,root,755)
