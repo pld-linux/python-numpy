@@ -21,10 +21,11 @@ BuildRequires:	python-devel >= 1:2.5
 Obsoletes:	python-numpy-Properties
 # -- dropped some time ago, should have been released as separate package, but wasn't
 Obsoletes:	python-numpy-kinds
+# old subpackage, merged into main
+Obsoletes:	python-numpy-FFT
 # -- dropped during Numeric->numpy transition
 Obsoletes:	python-numpy-MA
 Obsoletes:	python-numpy-RNG
-Provides:	f2py
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -48,30 +49,11 @@ C header files for numerical modules.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe języka C modułów numerycznych.
 
-%package FFT
-Summary:	Interface to the FFTPACK FORTRAN library
-Summary(pl.UTF-8):	Interfejs do biblioteki FFTPACK języka Fortran
-Group:		Libraries/Python
-%pyrequires_eq	python-libs
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-
-%description FFT
-The FFT.py module provides a simple interface to the FFTPACK FORTRAN
-library, which is a powerful standard library for doing fast Fourier
-transforms of real and complex data sets.
-
-%description FFT -l pl.UTF-8
-Moduł FFT zawiera prosty interfejs do biblioteki FFTPACK języka
-Fortran. Ta biblioteka o wysokich możliwościach jest standardowo
-używana do prowadzenia obliczeń za pomocą dyskretnej transformaty
-Fouriera na liczba rzeczywistych i zespolonych.
-
 %package numarray
 Summary:	Array manipulation and computations for python
 Summary(pl.UTF-8):	Operacje i obliczenia na tablicach dla Pythona
 Group:		Development/Languages/Python
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Provides:	numarray
 
 %description numarray
 Numarray provides array manipulation and computational capabilities
@@ -181,6 +163,9 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/%{module}/distutils/command/*.py[co]
 %dir %{py_sitedir}/%{module}/distutils/fcompiler
 %{py_sitedir}/%{module}/distutils/fcompiler/*.py[co]
+%dir %{py_sitedir}/%{module}/fft
+%attr(755,root,root) %{py_sitedir}/%{module}/fft/*.so
+%{py_sitedir}/%{module}/fft/*.py[co]
 %dir %{py_sitedir}/%{module}/lib
 %{py_sitedir}/%{module}/lib/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/lib/*.so
@@ -198,12 +183,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{py_sitedir}/%{module}/core/include
 %{py_sitedir}/%{module}/random/*.h
-
-%files FFT
-%defattr(644,root,root,755)
-%dir %{py_sitedir}/%{module}/fft
-%attr(755,root,root) %{py_sitedir}/%{module}/fft/*.so
-%{py_sitedir}/%{module}/fft/*.py[co]
 
 %files numarray
 %defattr(644,root,root,755)
