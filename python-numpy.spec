@@ -1,140 +1,130 @@
+#
+# TODO:
+#	- description for oldnumeric
+#
 %define		module	numpy
-%define		mname	Numeric
 
 Summary:	Python numerical facilities
-Summary(pl):	Modu³y do obliczeñ numerycznych dla jêzyka Python
+Summary(pl.UTF-8):	ModuÅ‚y do obliczeÅ„ numerycznych dla jÄ™zyka Python
 Name:		python-%{module}
-Version:	23.7
+Version:	1.0.4
 Release:	1
+Epoch:		1
 License:	distributable
 Group:		Libraries/Python
-Source0:	http://dl.sourceforge.net/numpy/%{mname}-%{version}.tar.gz
-# Source0-md5:	8054781c58ae9cf6fe498316860b5ea8
-Patch0:		%{name}-lite.patch
+Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}.tar.gz
+# Source0-md5:	8f011e9d7697da570efaac61c51725e0
 URL:		http://sourceforge.net/projects/numpy/
-BuildRequires:	python-devel >= 1:2.3
-BuildRequires:	rpm-pythonprov
+BuildRequires:	lapack-devel >= 3.1.1-2
+BuildRequires:	python-devel >= 1:2.5
 %pyrequires_eq	python-libs
+# -- dropped some time ago
+Obsoletes:	python-numpy-Properties
+# -- dropped some time ago, should have been released as separate package, but wasn't
+Obsoletes:	python-numpy-kinds
+# old subpackage, merged into main
+Obsoletes:	python-numpy-FFT
+# -- dropped during Numeric->numpy transition
+Obsoletes:	python-numpy-MA
+Obsoletes:	python-numpy-RNG
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 NumPy is a collection of extension modules to provide high-performance
 multidimensional numeric arrays to the Python programming language.
 
-%description -l pl
-Pakiet umo¿liwia wydajne obliczenia numeryczne na macierzach
+%description -l pl.UTF-8
+Pakiet umoÅ¼liwia wydajne obliczenia numeryczne na macierzach
 wielowymiarowych.
 
 %package devel
 Summary:	C header files for numerical modules
-Summary(pl):	Pliki nag³ówkowe jêzyka C modu³ów numerycznych
+Summary(pl.UTF-8):	Pliki nagÅ‚Ã³wkowe jÄ™zyka C moduÅ‚Ã³w numerycznych
 Group:		Development/Languages/Python
 %pyrequires_eq	python-devel
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
 C header files for numerical modules.
 
-%description devel -l pl
-Pliki nag³ówkowe jêzyka C modu³ów numerycznych.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe jÄ™zyka C moduÅ‚Ã³w numerycznych.
 
-%package FFT
-Summary:	Interface to the FFTPACK FORTRAN library
-Summary(pl):	Interfejs do biblioteki FFTPACK jêzyka Fortran
+%package numarray
+Summary:	Array manipulation and computations for python
+Summary(pl.UTF-8):	Operacje i obliczenia na tablicach dla Pythona
+Group:		Development/Languages/Python
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description numarray
+Numarray provides array manipulation and computational capabilities
+similar to those found in IDL, Matlab, or Octave. Using numarray, it
+is possible to write many efficient numerical data processing
+applications directly in Python without using any C, C++ or Fortran
+code (as well as doing such analysis interactively within Python or
+PyRAF). For algorithms that are not well suited for efficient
+computation using array facilities it is possible to write C functions
+(and eventually Fortran) that can read and write numarray arrays that
+can be called from Python.
+
+Numarray is a re-implementation of an older Python array module called
+Numeric. In general its interface is very similar. It is mostly
+backward compatible and will be becoming more so in future releases.
+
+%description numarray -l pl.UTF-8
+Numarray zapewnia narzÄ™dzia do operacji oraz obliczeÅ„ na tablicach
+podobne do tych, jakie zapewniajÄ… IDL, Matlab czy Octave. UÅ¼ywajÄ…c
+numarray moÅ¼liwe jest stworzenie bezpoÅ›rednio w Pythonie, nie uÅ¼ywajÄ…c
+wstawek C, C++ czy fortranowych, wielu wydajnych aplikacji do
+przetwarzania danych numerycznych. Dla algorytmÃ³w, ktÃ³re nie pracujÄ…
+wydajnie z tablicami, moÅ¼liwe jest napisanie funkcji C, ktÃ³re mogÄ…
+czytaÄ‡ i zapisywaÄ‡ tablice numarray, i ktÃ³re mogÄ… byÄ‡ wywoÅ‚ywane z
+poziomu Pythona.
+
+Numarray jest ponownÄ… implementacjÄ… starszego moduÅ‚u Pythona -
+Numeric. Interfejsy tych moduÅ‚Ã³w sÄ… do siebie bardzo podobne. Numarray
+jest w wiÄ™kszoÅ›ci przypadkÃ³w kompatybilny wstecz, a sytuacja poprawi
+siÄ™ w nowszych wersjach.
+
+%package numarray-devel
+Summary:	Header files for python-numarray
+Summary(pl.UTF-8):	Pliki nagÅ‚Ã³wkowe dla python-numarray
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+Requires:	%{name}-numarray = %{epoch}:%{version}-%{release}
+
+%description numarray-devel
+Header files for python-numarray.
+
+%description numarray-devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe dla python-numarray.
+
+%package oldnumeric
+Summary:	Old numeric packages
+Summary(pl.UTF-8):	Stare pakiety numeric
 Group:		Libraries/Python
-%pyrequires_eq	python-libs
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
-%description FFT
-The FFT.py module provides a simple interface to the FFTPACK FORTRAN
-library, which is a powerful standard library for doing fast Fourier
-transforms of real and complex data sets.
+%description oldnumeric
+Old numeric packages.
 
-%description FFT -l pl
-Modu³ FFT zawiera prosty interfejs do biblioteki FFTPACK jêzyka
-Fortran. Ta biblioteka o wysokich mo¿liwo¶ciach jest standardowo
-u¿ywana do prowadzenia obliczeñ za pomoc± dyskretnej transformaty
-Fouriera na liczba rzeczywistych i zespolonych.
+%description oldnumeric -l pl.UTF-8
+Stare pakiety numeric.
 
-# -- will be released as separate package
-#%package kinds
-#Summary:	Implementation of PEP 0242 - precision and range control of numeric computations
-#Summary(pl):	Implementacja propozycji PEP 0242 - mo¿liwo¶æ kontrolowania precyzji i zakresu obliczeñ numerycznych
-#Group:		Libraries/Python
-#%pyrequires_eq	python-libs
-#Requires:	%{name} = %{version}-%{release}
-#
-#%description kinds
-#This is implementation of PEP 0242. PEP's abstract follows:
-#
-#This proposal gives the user optional control over the precision and
-#range of numeric computations so that a computation can be written
-#once and run anywhere with at least the desired precision and range.
-#It is backward compatible with existing code.
-#
-#%description kinds -l pl
-#Modu³ zawiera implementacjê propozycji PEP 0242. Oto jej streszczenie.
-#
-#Propozycja ta umo¿liwia u¿ytkownikowi, opcjonalnie, kontrolê nad
-#precyzj± i zakresem obliczeñ numerycznych. Dziêki temu raz napisane
-#obliczenia mog± byæ uruchamiane na dowolnej maszynie. Mechanizm jest
-#kompatybilny wstecz z istniej±cymi programami.
-
-%package MA
-Summary:	MA - a facility for dealing with masked arrays
-Summary(pl):	Modu³ do obs³ugi macierzy niepe³nych
+%package -n f2py
+Summary:	Fortran to Python interface generator
+Summary(pl.UTF-8):	Generator interfejsÃ³w z Fortranu do Pythona
 Group:		Libraries/Python
-%pyrequires_eq	python-libs
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
-%description MA
-Masked arrays are arrays that may have missing or invalid entries.
-Module MA provides a work-alike replacement for Numeric that supports
-data arrays with masks.
+%description -n f2py
+Fortran to Python interface generator.
 
-%description MA -l pl
-Macierze niepe³ne s± to macierze, którym mo¿e brakowaæ lub mog±
-zawieraæ niepoprawne warto¶ci. Modu³ MA zawiera odpowiednie narzêdzia
-do operowania na tego typu macierzach.
-
-# -- removed(?)
-#%package Properties
-#Summary:	Property class implementation for Python
-#Summary(pl):	Implementacja klasy z w³a¶ciwo¶ciami dla jêzyka Python
-#Group:		Libraries/Python
-#%pyrequires_eq	python-libs
-#Requires:	%{name} = %{version}-%{release}
-#
-#%description Properties
-#PropertiedClass is a mixin class that can be used to emulate
-#properties in a Python class. A property is an attribute whose read,
-#write, or deleting requires special handling. It is also possible to
-#use this facility to prevent the writing or deleting of a property.
-#
-#%description Properties -l pl
-#PropertiedClass jest klas±, która mo¿e byæ u¿yta do emulacji
-#w³a¶ciwo¶ci w klasach jêzyka Python. W³a¶ciwo¶æ klasy jest atrybutem,
-#którego czytanie, przypisywanie mu warto¶ci, czy te¿ jego usuwanie
-#powinno byæ traktowane w sposób specjalny. Mechanizm ten mo¿e byæ te¿
-#u¿ywany w celu ustalenia jakiego¶ atrybutu jako tylko do odczytu.
-
-%package RNG
-Summary:	Random Number Generator Object for NumPy
-Summary(pl):	Obiekt generatora liczb losowych dla modu³u NumPy
-Group:		Libraries/Python
-%pyrequires_eq	python-libs
-Requires:	%{name} = %{version}-%{release}
-
-%description RNG
-RNG provides a random number object to Numerical Python.
-
-%description RNG -l pl
-Modu³ ten zawiera implementacjê obiektu generatora liczb losowych dla
-jêzyka Python.
+%description -n f2py -l pl.UTF-8
+Generator interfejsÃ³w z Fortranu do Pythona.
 
 %prep
-%setup -q -n %{mname}-%{version}
-%patch0 -p1
+%setup -q -n %{module}-%{version}
 
 %build
 CC="%{__cc}"; export CC
@@ -149,45 +139,72 @@ python setup.py install \
 
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
 %py_comp $RPM_BUILD_ROOT%{py_sitedir}
+%py_postclean
+
+rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/{*.txt,COMPATIBILITY,scipy_compatibility,doc}
+rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/*/{tests,docs}
+# already in f2py package
+rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/f2py/f2py.1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/%{mname}
-%{py_sitedir}/%{mname}.pth
-%attr(755,root,root) %{py_sitedir}/%{mname}/*.so
-%{py_sitedir}/%{mname}/*.py[co]
+%dir %{py_sitedir}/%{module}
+%{py_sitedir}/%{module}/*.py[co]
+%{py_sitedir}/%{module}/tests
+%dir %{py_sitedir}/%{module}/core
+%{py_sitedir}/%{module}/core/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/core/*.so
+%dir %{py_sitedir}/%{module}/distutils
+%{py_sitedir}/%{module}/distutils/*.py[co]
+#%{py_sitedir}/%{module}/distutils/site.cfg
+%dir %{py_sitedir}/%{module}/distutils/command
+%{py_sitedir}/%{module}/distutils/command/*.py[co]
+%dir %{py_sitedir}/%{module}/distutils/fcompiler
+%{py_sitedir}/%{module}/distutils/fcompiler/*.py[co]
+%dir %{py_sitedir}/%{module}/fft
+%attr(755,root,root) %{py_sitedir}/%{module}/fft/*.so
+%{py_sitedir}/%{module}/fft/*.py[co]
+%dir %{py_sitedir}/%{module}/lib
+%{py_sitedir}/%{module}/lib/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/lib/*.so
+%dir %{py_sitedir}/%{module}/linalg
+%{py_sitedir}/%{module}/linalg/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/linalg/*.so
+%dir %{py_sitedir}/%{module}/random
+%{py_sitedir}/%{module}/random/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/random/*.so
+%dir %{py_sitedir}/%{module}/testing
+%{py_sitedir}/%{module}/testing/*.py[co]
+%{py_sitedir}/numpy-*.egg-info
 
 %files devel
 %defattr(644,root,root,755)
-%{py_incdir}/%{mname}
+%{py_sitedir}/%{module}/core/include
+%{py_sitedir}/%{module}/random/*.h
 
-%files FFT
+%files numarray
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/%{mname}/FFT
-%attr(755,root,root) %{py_sitedir}/%{mname}/FFT/*.so
-%{py_sitedir}/%{mname}/FFT/*.py[co]
+%dir %{py_sitedir}/%{module}/numarray
+%attr(755,root,root) %{py_sitedir}/%{module}/numarray/*.so
+%{py_sitedir}/%{module}/numarray/*.py[co]
 
-#%files kinds
-#%defattr(644,root,root,755)
-#%dir %{py_sitedir}/%{mname}/kinds
-#%attr(755,root,root) %{py_sitedir}/%{mname}/kinds/*.so
-#%{py_sitedir}/%{mname}/kinds/*.py[co]
-
-%files MA
+%files numarray-devel
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/%{mname}/MA
-%{py_sitedir}/%{mname}/MA/*.py[co]
+%dir %{py_sitedir}/%{module}/numarray/numpy
+%{py_sitedir}/%{module}/numarray/numpy/*
 
-#%files Properties
-#%defattr(644,root,root,755)
-#%dir %{py_sitedir}/%{mname}/PropertiedClasses
-#%{py_sitedir}/%{mname}/PropertiedClasses/*.py[co]
-
-%files RNG
+%files oldnumeric
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/%{mname}/RNG
-%attr(755,root,root) %{py_sitedir}/%{mname}/RNG/*.so
-%{py_sitedir}/%{mname}/RNG/*.py[co]
+%dir %{py_sitedir}/%{module}/oldnumeric
+%{py_sitedir}/%{module}/oldnumeric/*
+
+%files -n f2py
+%defattr(644,root,root,755)
+%attr(744,root,root) %{_bindir}/f2py
+%dir %{py_sitedir}/%{module}/f2py
+%{py_sitedir}/%{module}/f2py/*.py[co]
+%{py_sitedir}/%{module}/f2py/src
+%{py_sitedir}/%{module}/f2py/lib
