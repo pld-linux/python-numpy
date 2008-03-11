@@ -16,7 +16,7 @@ Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}.tar.gz
 # Source0-md5:	8f011e9d7697da570efaac61c51725e0
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	lapack-devel >= 3.1.1-2
-BuildRequires:	python-devel >= 1:2.5
+BuildRequires:	python-devel >= 1:2.3
 %pyrequires_eq	python-libs
 # -- dropped some time ago
 Obsoletes:	python-numpy-Properties
@@ -178,7 +178,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/%{module}/random/*.so
 %dir %{py_sitedir}/%{module}/testing
 %{py_sitedir}/%{module}/testing/*.py[co]
-%{py_sitedir}/numpy-*.egg-info
 
 %files devel
 %defattr(644,root,root,755)
