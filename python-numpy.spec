@@ -17,6 +17,7 @@ Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}.tar.gz
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	lapack-devel >= 3.1.1-2
 BuildRequires:	python-devel >= 1:2.5
+BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-libs
 # -- dropped some time ago
 Obsoletes:	python-numpy-Properties
