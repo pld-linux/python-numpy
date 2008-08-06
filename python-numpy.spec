@@ -7,13 +7,13 @@
 Summary:	Python numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python
 Name:		python-%{module}
-Version:	1.0.4
-Release:	2
+Version:	1.1.1
+Release:	1
 Epoch:		1
 License:	distributable
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}.tar.gz
-# Source0-md5:	8f011e9d7697da570efaac61c51725e0
+# Source0-md5:	af066b59a50bf5dbe1a14d6be3df6937
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	lapack-devel >= 3.1.1-2
 BuildRequires:	python-devel >= 1:2.5
@@ -180,6 +180,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/%{module}/testing
 %{py_sitedir}/%{module}/testing/*.py[co]
 %{py_sitedir}/numpy-*.egg-info
+%dir %{py_sitedir}/numpy/ma
+%{py_sitedir}/numpy/ma/*.py[co]
 
 %files devel
 %defattr(644,root,root,755)
@@ -208,4 +210,4 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/%{module}/f2py
 %{py_sitedir}/%{module}/f2py/*.py[co]
 %{py_sitedir}/%{module}/f2py/src
-%{py_sitedir}/%{module}/f2py/lib
+#%{py_sitedir}/%{module}/f2py/lib
