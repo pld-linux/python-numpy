@@ -10,7 +10,7 @@ Name:		python-%{module}
 Version:	1.1.1
 Release:	1
 Epoch:		1
-License:	distributable
+License:	BSD
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}.tar.gz
 # Source0-md5:	af066b59a50bf5dbe1a14d6be3df6937
@@ -130,12 +130,12 @@ Generator interfejsów z Fortranu do Pythona.
 %build
 CC="%{__cc}"; export CC
 CFLAGS="%{rpmcflags}"; export CFLAGS
-python setup.py build
+%{__python} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-python setup.py install \
+%{__python} setup.py install \
 	--root=$RPM_BUILD_ROOT
 
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
@@ -160,7 +160,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/%{module}/core/*.so
 %dir %{py_sitedir}/%{module}/distutils
 %{py_sitedir}/%{module}/distutils/*.py[co]
-#%{py_sitedir}/%{module}/distutils/site.cfg
 %dir %{py_sitedir}/%{module}/distutils/command
 %{py_sitedir}/%{module}/distutils/command/*.py[co]
 %dir %{py_sitedir}/%{module}/distutils/fcompiler
@@ -210,4 +209,3 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/%{module}/f2py
 %{py_sitedir}/%{module}/f2py/*.py[co]
 %{py_sitedir}/%{module}/f2py/src
-#%{py_sitedir}/%{module}/f2py/lib
