@@ -8,7 +8,7 @@ Summary:	Python numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python
 Name:		python-%{module}
 Version:	1.1.1
-Release:	3
+Release:	4
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
@@ -28,6 +28,7 @@ Obsoletes:	python-numpy-FFT
 # -- dropped during Numeric->numpy transition
 Obsoletes:	python-numpy-MA
 Obsoletes:	python-numpy-RNG
+Requires:	pydoc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
