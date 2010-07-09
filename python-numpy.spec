@@ -7,13 +7,13 @@
 Summary:	Python numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python
 Name:		python-%{module}
-Version:	1.1.1
-Release:	6
+Version:	1.4.1
+Release:	0.1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}.tar.gz
-# Source0-md5:	af066b59a50bf5dbe1a14d6be3df6937
+# Source0-md5:	5c7b5349dc3161763f7f366ceb96516b
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	lapack-devel >= 3.1.1-2
 BuildRequires:	python-devel
