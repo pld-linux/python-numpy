@@ -143,8 +143,10 @@ rm -rf $RPM_BUILD_ROOT
 %py_comp $RPM_BUILD_ROOT%{py_sitedir}
 %py_postclean
 
+mv $RPM_BUILD_ROOT%{py_sitedir}/%{module}/site.cfg{.example,}
+
 rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/{*.txt,COMPATIBILITY,scipy_compatibility,doc}
-rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/*/{tests,docs}
+rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/*/{benchmarks,tests,docs}
 # already in f2py package
 rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/f2py/f2py.1
 
@@ -156,6 +158,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/%{module}
 %{py_sitedir}/%{module}/*.py[co]
 %{py_sitedir}/%{module}/tests
+%dir %{py_sitedir}/%{module}/compat
+%{py_sitedir}/%{module}/compat/*.py[co]
 %dir %{py_sitedir}/%{module}/core
 %{py_sitedir}/%{module}/core/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/core/*.so
@@ -173,6 +177,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/%{module}/lib/*.so
 %dir %{py_sitedir}/%{module}/linalg
 %{py_sitedir}/%{module}/linalg/*.py[co]
+%dir %{py_sitedir}/%{module}/matrixlib
+%{py_sitedir}/%{module}/matrixlib/*.py[co]
+%dir %{py_sitedir}/%{module}/polynomial
+%{py_sitedir}/%{module}/polynomial/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/linalg/*.so
 %dir %{py_sitedir}/%{module}/random
 %{py_sitedir}/%{module}/random/*.py[co]
@@ -188,7 +196,9 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %{py_sitedir}/%{module}/core/include
+%{py_sitedir}/%{module}/core/lib
 %{py_sitedir}/%{module}/random/*.h
+%{py_sitedir}/%{module}/site.cfg
 
 %files numarray
 %defattr(644,root,root,755)
