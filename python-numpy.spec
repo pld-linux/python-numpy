@@ -8,7 +8,7 @@ Summary:	Python numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python
 Name:		python-%{module}
 Version:	1.4.1
-Release:	0.1
+Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
