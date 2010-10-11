@@ -7,13 +7,13 @@
 Summary:	Python numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python
 Name:		python-%{module}
-Version:	1.4.1
+Version:	1.5.0
 Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
-Source0:	http://dl.sourceforge.net/numpy/%{module}-%{version}.tar.gz
-# Source0-md5:	5c7b5349dc3161763f7f366ceb96516b
+Source0:	http://downloads.sourceforge.net/numpy/%{module}-%{version}.tar.gz
+# Source0-md5:	3a8bfdc434df782d647161c48943ee09
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	lapack-devel >= 3.1.1-2
 BuildRequires:	python-devel
@@ -25,7 +25,7 @@ Obsoletes:	python-numpy-Properties
 Obsoletes:	python-numpy-kinds
 # old subpackage, merged into main
 Obsoletes:	python-numpy-FFT
-# -- dropped during Numeric->numpy transition
+# -- dropped during Numeric->numpy transition (ma in main now?)
 Obsoletes:	python-numpy-MA
 Obsoletes:	python-numpy-RNG
 Requires:	pydoc
@@ -157,7 +157,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/%{module}
 %{py_sitedir}/%{module}/*.py[co]
-%{py_sitedir}/%{module}/tests
 %dir %{py_sitedir}/%{module}/compat
 %{py_sitedir}/%{module}/compat/*.py[co]
 %dir %{py_sitedir}/%{module}/core
@@ -170,28 +169,32 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/%{module}/distutils/fcompiler
 %{py_sitedir}/%{module}/distutils/fcompiler/*.py[co]
 %dir %{py_sitedir}/%{module}/fft
-%attr(755,root,root) %{py_sitedir}/%{module}/fft/*.so
 %{py_sitedir}/%{module}/fft/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/fft/fftpack_lite.so
 %dir %{py_sitedir}/%{module}/lib
 %{py_sitedir}/%{module}/lib/*.py[co]
-%attr(755,root,root) %{py_sitedir}/%{module}/lib/*.so
+%attr(755,root,root) %{py_sitedir}/%{module}/lib/_compiled_base.so
 %dir %{py_sitedir}/%{module}/linalg
 %{py_sitedir}/%{module}/linalg/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/linalg/lapack_lite.so
+%dir %{py_sitedir}/numpy/ma
+%{py_sitedir}/numpy/ma/*.py[co]
 %dir %{py_sitedir}/%{module}/matrixlib
 %{py_sitedir}/%{module}/matrixlib/*.py[co]
 %dir %{py_sitedir}/%{module}/polynomial
 %{py_sitedir}/%{module}/polynomial/*.py[co]
-%attr(755,root,root) %{py_sitedir}/%{module}/linalg/*.so
 %dir %{py_sitedir}/%{module}/random
 %{py_sitedir}/%{module}/random/*.py[co]
-%attr(755,root,root) %{py_sitedir}/%{module}/random/*.so
+%attr(755,root,root) %{py_sitedir}/%{module}/random/mtrand.so
 %dir %{py_sitedir}/%{module}/testing
 %{py_sitedir}/%{module}/testing/*.py[co]
+%dir %{py_sitedir}/%{module}/tests
+%{py_sitedir}/%{module}/tests/*.py[co]
+%dir %{py_sitedir}/%{module}/tools
+%{py_sitedir}/%{module}/tools/py3tool.py[co]
 %if "%{py_ver}" > "2.4"
-%{py_sitedir}/numpy-*.egg-info
+%{py_sitedir}/numpy-%{version}-py*.egg-info
 %endif
-%dir %{py_sitedir}/numpy/ma
-%{py_sitedir}/numpy/ma/*.py[co]
 
 %files devel
 %defattr(644,root,root,755)
@@ -203,18 +206,17 @@ rm -rf $RPM_BUILD_ROOT
 %files numarray
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/%{module}/numarray
-%attr(755,root,root) %{py_sitedir}/%{module}/numarray/*.so
 %{py_sitedir}/%{module}/numarray/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/numarray/_capi.so
 
 %files numarray-devel
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/%{module}/numarray/numpy
-%{py_sitedir}/%{module}/numarray/numpy/*
+%{py_sitedir}/%{module}/numarray/include
 
 %files oldnumeric
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/%{module}/oldnumeric
-%{py_sitedir}/%{module}/oldnumeric/*
+%{py_sitedir}/%{module}/oldnumeric/*.py[co]
 
 %files -n f2py
 %defattr(644,root,root,755)
