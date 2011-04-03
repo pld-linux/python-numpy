@@ -8,7 +8,7 @@ Summary:	Python numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python
 Name:		python-%{module}
 Version:	1.5.1
-Release:	1
+Release:	2
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
@@ -220,7 +220,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n f2py
 %defattr(644,root,root,755)
-%attr(744,root,root) %{_bindir}/f2py
+%attr(755,root,root) %{_bindir}/f2py
 %dir %{py_sitedir}/%{module}/f2py
 %{py_sitedir}/%{module}/f2py/*.py[co]
 %{py_sitedir}/%{module}/f2py/src
