@@ -8,7 +8,7 @@ Summary:	Python numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python
 Name:		python-%{module}
 Version:	1.5.1
-Release:	2
+Release:	3
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
@@ -141,7 +141,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
 %py_comp $RPM_BUILD_ROOT%{py_sitedir}
-%py_postclean
 
 mv $RPM_BUILD_ROOT%{py_sitedir}/%{module}/site.cfg{.example,}
 
@@ -156,41 +155,57 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/%{module}
+%{py_sitedir}/%{module}/*.py
 %{py_sitedir}/%{module}/*.py[co]
 %dir %{py_sitedir}/%{module}/compat
+%{py_sitedir}/%{module}/compat/*.py
 %{py_sitedir}/%{module}/compat/*.py[co]
 %dir %{py_sitedir}/%{module}/core
+%{py_sitedir}/%{module}/core/*.py
 %{py_sitedir}/%{module}/core/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/core/*.so
 %dir %{py_sitedir}/%{module}/distutils
+%{py_sitedir}/%{module}/distutils/*.py
 %{py_sitedir}/%{module}/distutils/*.py[co]
 %dir %{py_sitedir}/%{module}/distutils/command
+%{py_sitedir}/%{module}/distutils/command/*.py
 %{py_sitedir}/%{module}/distutils/command/*.py[co]
 %dir %{py_sitedir}/%{module}/distutils/fcompiler
+%{py_sitedir}/%{module}/distutils/fcompiler/*.py
 %{py_sitedir}/%{module}/distutils/fcompiler/*.py[co]
 %dir %{py_sitedir}/%{module}/fft
+%{py_sitedir}/%{module}/fft/*.py
 %{py_sitedir}/%{module}/fft/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/fft/fftpack_lite.so
 %dir %{py_sitedir}/%{module}/lib
+%{py_sitedir}/%{module}/lib/*.py
 %{py_sitedir}/%{module}/lib/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/lib/_compiled_base.so
 %dir %{py_sitedir}/%{module}/linalg
+%{py_sitedir}/%{module}/linalg/*.py
 %{py_sitedir}/%{module}/linalg/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/linalg/lapack_lite.so
 %dir %{py_sitedir}/numpy/ma
+%{py_sitedir}/numpy/ma/*.py
 %{py_sitedir}/numpy/ma/*.py[co]
 %dir %{py_sitedir}/%{module}/matrixlib
+%{py_sitedir}/%{module}/matrixlib/*.py
 %{py_sitedir}/%{module}/matrixlib/*.py[co]
 %dir %{py_sitedir}/%{module}/polynomial
+%{py_sitedir}/%{module}/polynomial/*.py
 %{py_sitedir}/%{module}/polynomial/*.py[co]
 %dir %{py_sitedir}/%{module}/random
+%{py_sitedir}/%{module}/random/*.py
 %{py_sitedir}/%{module}/random/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/random/mtrand.so
 %dir %{py_sitedir}/%{module}/testing
+%{py_sitedir}/%{module}/testing/*.py
 %{py_sitedir}/%{module}/testing/*.py[co]
 %dir %{py_sitedir}/%{module}/tests
+%{py_sitedir}/%{module}/tests/*.py
 %{py_sitedir}/%{module}/tests/*.py[co]
 %dir %{py_sitedir}/%{module}/tools
+%{py_sitedir}/%{module}/tools/py3tool.py
 %{py_sitedir}/%{module}/tools/py3tool.py[co]
 %if "%{py_ver}" > "2.4"
 %{py_sitedir}/numpy-%{version}-py*.egg-info
@@ -206,6 +221,7 @@ rm -rf $RPM_BUILD_ROOT
 %files numarray
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/%{module}/numarray
+%{py_sitedir}/%{module}/numarray/*.py
 %{py_sitedir}/%{module}/numarray/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/numarray/_capi.so
 
@@ -216,11 +232,13 @@ rm -rf $RPM_BUILD_ROOT
 %files oldnumeric
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/%{module}/oldnumeric
+%{py_sitedir}/%{module}/oldnumeric/*.py
 %{py_sitedir}/%{module}/oldnumeric/*.py[co]
 
 %files -n f2py
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/f2py
 %dir %{py_sitedir}/%{module}/f2py
+%{py_sitedir}/%{module}/f2py/*.py
 %{py_sitedir}/%{module}/f2py/*.py[co]
 %{py_sitedir}/%{module}/f2py/src
