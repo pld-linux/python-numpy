@@ -1,19 +1,14 @@
-#
-# TODO:
-#	- description for oldnumeric
-#
 %define		module	numpy
-
 Summary:	Python numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python
 Name:		python-%{module}
-Version:	1.5.1
-Release:	3
+Version:	1.6.0
+Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/numpy/%{module}-%{version}.tar.gz
-# Source0-md5:	376ef150df41b5353944ab742145352d
+# Source0-md5:	e0993c74cb8e83292e560eac1a9be8e9
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	lapack-devel >= 3.1.1-2
 BuildRequires:	python-devel
@@ -102,16 +97,17 @@ Header files for python-numarray.
 Pliki nagłówkowe dla python-numarray.
 
 %package oldnumeric
-Summary:	Old numeric packages
-Summary(pl.UTF-8):	Stare pakiety numeric
+Summary:	Modules providing backward compatibility with old Numeric packages
+Summary(pl.UTF-8):	Moduły zapewniające wsteczną kompatybilność ze starymi pakietami Numeric
 Group:		Libraries/Python
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description oldnumeric
-Old numeric packages.
+Modules providing backward compatibility with old Numeric packages.
 
 %description oldnumeric -l pl.UTF-8
-Stare pakiety numeric.
+Moduły zapewniające wsteczną kompatybilność ze starymi pakietami
+Numeric.
 
 %package -n f2py
 Summary:	Fortran to Python interface generator
@@ -142,12 +138,10 @@ rm -rf $RPM_BUILD_ROOT
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
 %py_comp $RPM_BUILD_ROOT%{py_sitedir}
 
-mv $RPM_BUILD_ROOT%{py_sitedir}/%{module}/site.cfg{.example,}
-
-rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/{*.txt,COMPATIBILITY,scipy_compatibility,doc}
-rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/*/{benchmarks,tests,docs}
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/%{module}/doc
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/%{module}/*/{benchmarks,tests,docs}
 # already in f2py package
-rm -rf $RPM_BUILD_ROOT%{py_sitedir}/%{module}/f2py/f2py.1
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/%{module}/f2py/f2py.1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -204,9 +198,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/%{module}/tests
 %{py_sitedir}/%{module}/tests/*.py
 %{py_sitedir}/%{module}/tests/*.py[co]
-%dir %{py_sitedir}/%{module}/tools
-%{py_sitedir}/%{module}/tools/py3tool.py
-%{py_sitedir}/%{module}/tools/py3tool.py[co]
 %if "%{py_ver}" > "2.4"
 %{py_sitedir}/numpy-%{version}-py*.egg-info
 %endif
@@ -216,7 +207,6 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/%{module}/core/include
 %{py_sitedir}/%{module}/core/lib
 %{py_sitedir}/%{module}/random/*.h
-%{py_sitedir}/%{module}/site.cfg
 
 %files numarray
 %defattr(644,root,root,755)
