@@ -23,6 +23,10 @@ Obsoletes:	python-numpy-FFT
 # -- dropped during Numeric->numpy transition (ma in main now?)
 Obsoletes:	python-numpy-MA
 Obsoletes:	python-numpy-RNG
+Obsoletes:	python-Numeric
+Obsoletes:	python-Numeric-FFT
+Obsoletes:	python-Numeric-MA
+Obsoletes:	python-Numeric-RNG
 Requires:	pydoc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -39,6 +43,7 @@ Summary:	C header files for numerical modules
 Summary(pl.UTF-8):	Pliki nagłówkowe języka C modułów numerycznych
 Group:		Development/Languages/Python
 %pyrequires_eq	python-devel
+Obsoletes:	python-Numeric-devel
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
