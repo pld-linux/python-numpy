@@ -13,6 +13,7 @@ License:	BSD
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/numpy/%{module}-%{version}.tar.gz
 # Source0-md5:	0ab72b3b83528a7ae79c6df9042d61c6
+Patch0:		%{name}-fortran-version.patch
 URL:		http://sourceforge.net/projects/numpy/
 %if %{with python2}
 BuildRequires:	python-devel
@@ -22,6 +23,7 @@ BuildRequires:	python-devel
 BuildRequires:	python3-devel >= 1:3.3
 BuildRequires:	python3-2to3
 %endif
+BuildRequires:	gcc-fortran
 BuildRequires:	lapack-devel >= 3.1.1-2
 BuildRequires:	rpm-pythonprov
 # -- dropped some time ago
@@ -239,6 +241,7 @@ Generator interfejsów z Fortranu do Pythona 3.
 
 %prep
 %setup -q -n %{module}-%{version}
+%patch0 -p1
 
 %build
 CC="%{__cc}"; export CC

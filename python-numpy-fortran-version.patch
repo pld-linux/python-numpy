@@ -1,0 +1,16 @@
+diff -dur numpy-1.7.1.orig/numpy/distutils/fcompiler/gnu.py numpy-1.7.1/numpy/distutils/fcompiler/gnu.py
+--- numpy-1.7.1.orig/numpy/distutils/fcompiler/gnu.py	2013-04-07 07:04:05.000000000 +0200
++++ numpy-1.7.1/numpy/distutils/fcompiler/gnu.py	2013-07-18 09:20:06.000000000 +0200
+@@ -36,10 +36,10 @@
+         m = re.match(r'GNU Fortran', version_string)
+         if not m:
+             return None
+-        m = re.match(r'GNU Fortran\s+95.*?([0-9-.]+)', version_string)
++        m = re.match(r'GNU Fortran\s+95.*?(\d[0-9-.]*)', version_string)
+         if m:
+             return ('gfortran', m.group(1))
+-        m = re.match(r'GNU Fortran.*?([0-9-.]+)', version_string)
++        m = re.match(r'GNU Fortran.*?(\d[0-9-.]*)', version_string)
+         if m:
+             v = m.group(1)
+             if v.startswith('0') or v.startswith('2') or v.startswith('3'):
