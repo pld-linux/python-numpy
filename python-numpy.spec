@@ -55,23 +55,6 @@ numeryczne na macierzach wielowymiarowych w języku Python.
 
 Ten pakiet zawiera moduły Pythona 2.
 
-%package -n python3-%{module}
-Summary:	Python 3.x numerical facilities
-Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 3.x
-Group:		Libraries/Python
-
-%description -n python3-%{module}
-NumPy is a collection of extension modules to provide high-performance
-multidimensional numeric arrays to the Python programming language.
-
-This package contains Python 3 modules.
-
-%description -l pl.UTF-8 -n python3-%{module}
-NumPy to zbiór modułów rozszerzeń zapewniających wydajne obliczenia
-numeryczne na macierzach wielowymiarowych w języku Python.
-
-Ten pakiet zawiera moduły Pythona 3.
-
 %package devel
 Summary:	C header files for Python 2 numerical modules
 Summary(pl.UTF-8):	Pliki nagłówkowe języka C modułów numerycznych Pythona 2
@@ -85,20 +68,6 @@ C header files for Python 2 numerical modules.
 
 %description devel -l pl.UTF-8
 Pliki nagłówkowe języka C modułów numerycznych Pythona 2.
-
-%package -n python3-%{module}-devel
-Summary:	C header files for Python 3 numerical modules
-Summary(pl.UTF-8):	Pliki nagłówkowe języka C modułów numerycznych Pythona 3
-Group:		Development/Languages/Python
-%pyrequires_eq	python-devel
-Requires:	python3-%{module} = %{epoch}:%{version}-%{release}
-Obsoletes:	python-Numeric-devel
-
-%description -n python3-%{module}-devel
-C header files for Python 3 numerical modules.
-
-%description -n python3-%{module}-devel -l pl.UTF-8
-Pliki nagłówkowe języka C modułów numerycznych Pythona 3.
 
 %package numarray
 Summary:	Array manipulation and computations for Python 2
@@ -140,6 +109,76 @@ się w nowszych wersjach.
 
 Ten pakiet zawiera moduł Pythona 2.
 
+%package numarray-devel
+Summary:	Header files for python-numarray
+Summary(pl.UTF-8):	Pliki nagłówkowe dla pakietu python-numarray
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+Requires:	%{name}-numarray = %{epoch}:%{version}-%{release}
+
+%description numarray-devel
+Header files for python-numarray.
+
+%description numarray-devel -l pl.UTF-8
+Pliki nagłówkowe dla pakietu python-numarray.
+
+%package oldnumeric
+Summary:	Python 2 modules providing backward compatibility with old Numeric packages
+Summary(pl.UTF-8):	Moduły Pythona 2 zapewniające wsteczną kompatybilność ze starymi pakietami Numeric
+Group:		Libraries/Python
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description oldnumeric
+Python 2 modules providing backward compatibility with old Numeric
+packages.
+
+%description oldnumeric -l pl.UTF-8
+Moduły Pythona 2 zapewniające wsteczną kompatybilność ze starymi
+pakietami Numeric.
+
+%package -n f2py
+Summary:	Fortran to Python 2 interface generator
+Summary(pl.UTF-8):	Generator interfejsów z Fortranu do Pythona 2
+Group:		Libraries/Python
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description -n f2py
+Fortran to Python 2 interface generator.
+
+%description -n f2py -l pl.UTF-8
+Generator interfejsów z Fortranu do Pythona 2.
+
+%package -n python3-%{module}
+Summary:	Python 3.x numerical facilities
+Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 3.x
+Group:		Libraries/Python
+
+%description -n python3-%{module}
+NumPy is a collection of extension modules to provide high-performance
+multidimensional numeric arrays to the Python programming language.
+
+This package contains Python 3 modules.
+
+%description -l pl.UTF-8 -n python3-%{module}
+NumPy to zbiór modułów rozszerzeń zapewniających wydajne obliczenia
+numeryczne na macierzach wielowymiarowych w języku Python.
+
+Ten pakiet zawiera moduły Pythona 3.
+
+%package -n python3-%{module}-devel
+Summary:	C header files for Python 3 numerical modules
+Summary(pl.UTF-8):	Pliki nagłówkowe języka C modułów numerycznych Pythona 3
+Group:		Development/Languages/Python
+%pyrequires_eq	python-devel
+Requires:	python3-%{module} = %{epoch}:%{version}-%{release}
+Obsoletes:	python-Numeric-devel
+
+%description -n python3-%{module}-devel
+C header files for Python 3 numerical modules.
+
+%description -n python3-%{module}-devel -l pl.UTF-8
+Pliki nagłówkowe języka C modułów numerycznych Pythona 3.
+
 %package -n python3-%{module}-numarray
 Summary:	Array manipulation and computations for Python 3.x
 Summary(pl.UTF-8):	Operacje i obliczenia na tablicach dla Pythona 3.x
@@ -180,19 +219,6 @@ się w nowszych wersjach.
 
 Ten pakiet zawiera moduł Pythona 3.
 
-%package numarray-devel
-Summary:	Header files for python-numarray
-Summary(pl.UTF-8):	Pliki nagłówkowe dla pakietu python-numarray
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
-Requires:	%{name}-numarray = %{epoch}:%{version}-%{release}
-
-%description numarray-devel
-Header files for python-numarray.
-
-%description numarray-devel -l pl.UTF-8
-Pliki nagłówkowe dla pakietu python-numarray.
-
 %package -n python3-%{module}-numarray-devel
 Summary:	Header files for python3-numarray
 Summary(pl.UTF-8):	Pliki nagłówkowe dla pakietu python3-numarray
@@ -205,20 +231,6 @@ Header files for python3-numarray.
 
 %description -n python3-%{module}-numarray-devel -l pl.UTF-8
 Pliki nagłówkowe dla pakietu python3-numarray.
-
-%package oldnumeric
-Summary:	Python 2 modules providing backward compatibility with old Numeric packages
-Summary(pl.UTF-8):	Moduły Pythona 2 zapewniające wsteczną kompatybilność ze starymi pakietami Numeric
-Group:		Libraries/Python
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-
-%description oldnumeric
-Python 2 modules providing backward compatibility with old Numeric
-packages.
-
-%description oldnumeric -l pl.UTF-8
-Moduły Pythona 2 zapewniające wsteczną kompatybilność ze starymi
-pakietami Numeric.
 
 %package -n python3-%{module}-oldnumeric
 Summary:	Python 3 modules providing backward compatibility with old Numeric packages
@@ -233,18 +245,6 @@ packages.
 %description -n python3-%{module}-oldnumeric -l pl.UTF-8
 Moduły Pythona 3 zapewniające wsteczną kompatybilność ze starymi
 pakietami Numeric.
-
-%package -n f2py
-Summary:	Fortran to Python 2 interface generator
-Summary(pl.UTF-8):	Generator interfejsów z Fortranu do Pythona 2
-Group:		Libraries/Python
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-
-%description -n f2py
-Fortran to Python 2 interface generator.
-
-%description -n f2py -l pl.UTF-8
-Generator interfejsów z Fortranu do Pythona 2.
 
 %package -n f2py3
 Summary:	Fortran to Python 3 interface generator
@@ -307,7 +307,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/%{module}/distutils/mingw/gfortran_vs2003_hack.c
 %endif
 
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -367,6 +366,37 @@ rm -rf $RPM_BUILD_ROOT
 %if "%{py_ver}" > "2.4"
 %{py_sitedir}/numpy-%{version}-py*.egg-info
 %endif
+
+%files devel
+%defattr(644,root,root,755)
+%{py_sitedir}/%{module}/core/include
+%{py_sitedir}/%{module}/core/lib
+%{py_sitedir}/%{module}/random/*.h
+
+%files numarray
+%defattr(644,root,root,755)
+%dir %{py_sitedir}/%{module}/numarray
+%{py_sitedir}/%{module}/numarray/*.py
+%{py_sitedir}/%{module}/numarray/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/numarray/_capi.so
+
+%files numarray-devel
+%defattr(644,root,root,755)
+%{py_sitedir}/%{module}/numarray/include
+
+%files oldnumeric
+%defattr(644,root,root,755)
+%dir %{py_sitedir}/%{module}/oldnumeric
+%{py_sitedir}/%{module}/oldnumeric/*.py
+%{py_sitedir}/%{module}/oldnumeric/*.py[co]
+
+%files -n f2py
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/f2py
+%dir %{py_sitedir}/%{module}/f2py
+%{py_sitedir}/%{module}/f2py/*.py
+%{py_sitedir}/%{module}/f2py/*.py[co]
+%{py_sitedir}/%{module}/f2py/src
 %endif
 
 %if %{with python3}
@@ -423,81 +453,30 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/%{module}/tests/*.py
 %{py3_sitedir}/%{module}/tests/__pycache__
 %{py3_sitedir}/numpy-%{version}-py*.egg-info
-%endif
 
-%if %{with python2}
-%files devel
-%defattr(644,root,root,755)
-%{py_sitedir}/%{module}/core/include
-%{py_sitedir}/%{module}/core/lib
-%{py_sitedir}/%{module}/random/*.h
-%endif
-
-%if %{with python3}
 %files -n python3-%{module}-devel
 %defattr(644,root,root,755)
 %{py3_sitedir}/%{module}/core/include
 %{py3_sitedir}/%{module}/core/lib
 %{py3_sitedir}/%{module}/random/*.h
-%endif
 
-%if %{with python2}
-%files numarray
-%defattr(644,root,root,755)
-%dir %{py_sitedir}/%{module}/numarray
-%{py_sitedir}/%{module}/numarray/*.py
-%{py_sitedir}/%{module}/numarray/*.py[co]
-%attr(755,root,root) %{py_sitedir}/%{module}/numarray/_capi.so
-%endif
-
-%if %{with python3}
 %files -n python3-%{module}-numarray
 %defattr(644,root,root,755)
 %dir %{py3_sitedir}/%{module}/numarray
 %{py3_sitedir}/%{module}/numarray/*.py
 %{py3_sitedir}/%{module}/numarray/__pycache__
 %attr(755,root,root) %{py3_sitedir}/%{module}/numarray/_capi.cpython-3*.so
-%endif
 
-%if %{with python2}
-%files numarray-devel
-%defattr(644,root,root,755)
-%{py_sitedir}/%{module}/numarray/include
-%endif
-
-%if %{with python3}
 %files -n python3-%{module}-numarray-devel
 %defattr(644,root,root,755)
 %{py3_sitedir}/%{module}/numarray/include
-%endif
 
-%if %{with python2}
-%files oldnumeric
-%defattr(644,root,root,755)
-%dir %{py_sitedir}/%{module}/oldnumeric
-%{py_sitedir}/%{module}/oldnumeric/*.py
-%{py_sitedir}/%{module}/oldnumeric/*.py[co]
-%endif
-
-%if %{with python3}
 %files -n python3-%{module}-oldnumeric
 %defattr(644,root,root,755)
 %dir %{py3_sitedir}/%{module}/oldnumeric
 %{py3_sitedir}/%{module}/oldnumeric/*.py
 %{py3_sitedir}/%{module}/oldnumeric/__pycache__
-%endif
 
-%if %{with python2}
-%files -n f2py
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/f2py
-%dir %{py_sitedir}/%{module}/f2py
-%{py_sitedir}/%{module}/f2py/*.py
-%{py_sitedir}/%{module}/f2py/*.py[co]
-%{py_sitedir}/%{module}/f2py/src
-%endif
-
-%if %{with python3}
 %files -n f2py3
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/f2py3
