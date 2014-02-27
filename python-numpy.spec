@@ -1,10 +1,11 @@
+#
 # Conditional build:
-%bcond_without  python2 # CPython 2.x module
-%bcond_without  python3 # CPython 3.x module
+%bcond_without  python2 # CPython 2.x modules
+%bcond_without  python3 # CPython 3.x modules
 
 %define		module	numpy
-Summary:	Python numerical facilities
-Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python
+Summary:	Python 2 numerical facilities
+Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
 Version:	1.7.2
 Release:	1
@@ -46,9 +47,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 NumPy is a collection of extension modules to provide high-performance
 multidimensional numeric arrays to the Python programming language.
 
+This package contains Python 2 modules.
+
 %description -l pl.UTF-8
-Pakiet umożliwia wydajne obliczenia numeryczne na macierzach
-wielowymiarowych.
+NumPy to zbiór modułów rozszerzeń zapewniających wydajne obliczenia
+numeryczne na macierzach wielowymiarowych w języku Python.
+
+Ten pakiet zawiera moduły Pythona 2.
 
 %package -n python3-%{module}
 Summary:	Python 3.x numerical facilities
@@ -59,41 +64,45 @@ Group:		Libraries/Python
 NumPy is a collection of extension modules to provide high-performance
 multidimensional numeric arrays to the Python programming language.
 
+This package contains Python 3 modules.
+
 %description -l pl.UTF-8 -n python3-%{module}
-Pakiet umożliwia wydajne obliczenia numeryczne na macierzach
-wielowymiarowych.
+NumPy to zbiór modułów rozszerzeń zapewniających wydajne obliczenia
+numeryczne na macierzach wielowymiarowych w języku Python.
+
+Ten pakiet zawiera moduły Pythona 3.
 
 %package devel
-Summary:	C header files for numerical modules
-Summary(pl.UTF-8):	Pliki nagłówkowe języka C modułów numerycznych
+Summary:	C header files for Python 2 numerical modules
+Summary(pl.UTF-8):	Pliki nagłówkowe języka C modułów numerycznych Pythona 2
 Group:		Development/Languages/Python
 %pyrequires_eq	python-devel
-Obsoletes:	python-Numeric-devel
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Obsoletes:	python-Numeric-devel
 
 %description devel
-C header files for numerical modules.
+C header files for Python 2 numerical modules.
 
 %description devel -l pl.UTF-8
-Pliki nagłówkowe języka C modułów numerycznych.
+Pliki nagłówkowe języka C modułów numerycznych Pythona 2.
 
 %package -n python3-%{module}-devel
-Summary:	C header files for numerical modules
-Summary(pl.UTF-8):	Pliki nagłówkowe języka C modułów numerycznych
+Summary:	C header files for Python 3 numerical modules
+Summary(pl.UTF-8):	Pliki nagłówkowe języka C modułów numerycznych Pythona 3
 Group:		Development/Languages/Python
 %pyrequires_eq	python-devel
+Requires:	python3-%{module} = %{epoch}:%{version}-%{release}
 Obsoletes:	python-Numeric-devel
-Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description -n python3-%{module}-devel
-C header files for numerical modules.
+C header files for Python 3 numerical modules.
 
 %description -n python3-%{module}-devel -l pl.UTF-8
-Pliki nagłówkowe języka C modułów numerycznych.
+Pliki nagłówkowe języka C modułów numerycznych Pythona 3.
 
 %package numarray
-Summary:	Array manipulation and computations for python
-Summary(pl.UTF-8):	Operacje i obliczenia na tablicach dla Pythona
+Summary:	Array manipulation and computations for Python 2
+Summary(pl.UTF-8):	Operacje i obliczenia na tablicach dla Pythona 2
 Group:		Development/Languages/Python
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -112,6 +121,8 @@ Numarray is a re-implementation of an older Python array module called
 Numeric. In general its interface is very similar. It is mostly
 backward compatible and will be becoming more so in future releases.
 
+This package contains Python 2 module.
+
 %description numarray -l pl.UTF-8
 Numarray zapewnia narzędzia do operacji oraz obliczeń na tablicach
 podobne do tych, jakie zapewniają IDL, Matlab czy Octave. Używając
@@ -127,11 +138,13 @@ Numeric. Interfejsy tych modułów są do siebie bardzo podobne. Numarray
 jest w większości przypadków kompatybilny wstecz, a sytuacja poprawi
 się w nowszych wersjach.
 
+Ten pakiet zawiera moduł Pythona 2.
+
 %package -n python3-%{module}-numarray
-Summary:	Array manipulation and computations for python
-Summary(pl.UTF-8):	Operacje i obliczenia na tablicach dla Pythona
+Summary:	Array manipulation and computations for Python 3.x
+Summary(pl.UTF-8):	Operacje i obliczenia na tablicach dla Pythona 3.x
 Group:		Development/Languages/Python
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	python3-%{module} = %{epoch}:%{version}-%{release}
 
 %description -n python3-%{module}-numarray
 Numarray provides array manipulation and computational capabilities
@@ -148,6 +161,8 @@ Numarray is a re-implementation of an older Python array module called
 Numeric. In general its interface is very similar. It is mostly
 backward compatible and will be becoming more so in future releases.
 
+This package contains Python 3 module.
+
 %description -n python3-%{module}-numarray -l pl.UTF-8
 Numarray zapewnia narzędzia do operacji oraz obliczeń na tablicach
 podobne do tych, jakie zapewniają IDL, Matlab czy Octave. Używając
@@ -163,9 +178,11 @@ Numeric. Interfejsy tych modułów są do siebie bardzo podobne. Numarray
 jest w większości przypadków kompatybilny wstecz, a sytuacja poprawi
 się w nowszych wersjach.
 
+Ten pakiet zawiera moduł Pythona 3.
+
 %package numarray-devel
 Summary:	Header files for python-numarray
-Summary(pl.UTF-8):	Pliki nagłówkowe dla python-numarray
+Summary(pl.UTF-8):	Pliki nagłówkowe dla pakietu python-numarray
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 Requires:	%{name}-numarray = %{epoch}:%{version}-%{release}
@@ -174,64 +191,66 @@ Requires:	%{name}-numarray = %{epoch}:%{version}-%{release}
 Header files for python-numarray.
 
 %description numarray-devel -l pl.UTF-8
-Pliki nagłówkowe dla python-numarray.
+Pliki nagłówkowe dla pakietu python-numarray.
 
 %package -n python3-%{module}-numarray-devel
-Summary:	Header files for python-numarray
-Summary(pl.UTF-8):	Pliki nagłówkowe dla python-numarray
+Summary:	Header files for python3-numarray
+Summary(pl.UTF-8):	Pliki nagłówkowe dla pakietu python3-numarray
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
-Requires:	%{name}-numarray = %{epoch}:%{version}-%{release}
+Requires:	python3-%{module}-devel = %{epoch}:%{version}-%{release}
+Requires:	python3-%{module}-numarray = %{epoch}:%{version}-%{release}
 
 %description -n python3-%{module}-numarray-devel
-Header files for python-numarray.
+Header files for python3-numarray.
 
 %description -n python3-%{module}-numarray-devel -l pl.UTF-8
-Pliki nagłówkowe dla python-numarray.
+Pliki nagłówkowe dla pakietu python3-numarray.
 
 %package oldnumeric
-Summary:	Modules providing backward compatibility with old Numeric packages
-Summary(pl.UTF-8):	Moduły zapewniające wsteczną kompatybilność ze starymi pakietami Numeric
+Summary:	Python 2 modules providing backward compatibility with old Numeric packages
+Summary(pl.UTF-8):	Moduły Pythona 2 zapewniające wsteczną kompatybilność ze starymi pakietami Numeric
 Group:		Libraries/Python
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description oldnumeric
-Modules providing backward compatibility with old Numeric packages.
+Python 2 modules providing backward compatibility with old Numeric
+packages.
 
 %description oldnumeric -l pl.UTF-8
-Moduły zapewniające wsteczną kompatybilność ze starymi pakietami
-Numeric.
+Moduły Pythona 2 zapewniające wsteczną kompatybilność ze starymi
+pakietami Numeric.
 
 %package -n python3-%{module}-oldnumeric
-Summary:	Modules providing backward compatibility with old Numeric packages
-Summary(pl.UTF-8):	Moduły zapewniające wsteczną kompatybilność ze starymi pakietami Numeric
+Summary:	Python 3 modules providing backward compatibility with old Numeric packages
+Summary(pl.UTF-8):	Moduły Pythona 3 zapewniające wsteczną kompatybilność ze starymi pakietami Numeric
 Group:		Libraries/Python
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	python3-%{module} = %{epoch}:%{version}-%{release}
 
 %description -n python3-%{module}-oldnumeric
-Modules providing backward compatibility with old Numeric packages.
+Python 3 modules providing backward compatibility with old Numeric
+packages.
 
 %description -n python3-%{module}-oldnumeric -l pl.UTF-8
-Moduły zapewniające wsteczną kompatybilność ze starymi pakietami
-Numeric.
+Moduły Pythona 3 zapewniające wsteczną kompatybilność ze starymi
+pakietami Numeric.
 
 %package -n f2py
-Summary:	Fortran to Python interface generator
-Summary(pl.UTF-8):	Generator interfejsów z Fortranu do Pythona
+Summary:	Fortran to Python 2 interface generator
+Summary(pl.UTF-8):	Generator interfejsów z Fortranu do Pythona 2
 Group:		Libraries/Python
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description -n f2py
-Fortran to Python interface generator.
+Fortran to Python 2 interface generator.
 
 %description -n f2py -l pl.UTF-8
-Generator interfejsów z Fortranu do Pythona.
+Generator interfejsów z Fortranu do Pythona 2.
 
 %package -n f2py3
 Summary:	Fortran to Python 3 interface generator
 Summary(pl.UTF-8):	Generator interfejsów z Fortranu do Pythona 3
 Group:		Libraries/Python
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	python3-%{module} = %{epoch}:%{version}-%{release}
 
 %description -n f2py3
 Fortran to Python 3 interface generator.
