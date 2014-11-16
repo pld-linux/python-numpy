@@ -7,13 +7,13 @@
 Summary:	Python 2 numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
-Version:	1.7.2
-Release:	2
+Version:	1.8.2
+Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/numpy/%{module}-%{version}.tar.gz
-# Source0-md5:	6eba32e71bd30cf70b9ea2ef28519d9a
+# Source0-md5:	dd8eece8f6fda3a13836de4adbafb0cb
 Patch0:		%{name}-fortran-version.patch
 URL:		http://sourceforge.net/projects/numpy/
 %if %{with python2}
@@ -285,7 +285,7 @@ rm -rf $RPM_BUILD_ROOT
 %py_comp $RPM_BUILD_ROOT%{py_sitedir}
 
 %{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/%{module}/doc
-%{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/%{module}/*/{benchmarks,tests,docs}
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/%{module}/*/{tests,docs}
 # already in f2py package
 %{__rm} $RPM_BUILD_ROOT%{py_sitedir}/%{module}/f2py/f2py.1
 
@@ -343,6 +343,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/%{module}/linalg
 %{py_sitedir}/%{module}/linalg/*.py
 %{py_sitedir}/%{module}/linalg/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/linalg/_umath_linalg.so
 %attr(755,root,root) %{py_sitedir}/%{module}/linalg/lapack_lite.so
 %dir %{py_sitedir}/%{module}/ma
 %{py_sitedir}/%{module}/ma/*.py
@@ -432,6 +433,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py3_sitedir}/%{module}/linalg
 %{py3_sitedir}/%{module}/linalg/*.py
 %{py3_sitedir}/%{module}/linalg/__pycache__
+%attr(755,root,root) %{py3_sitedir}/%{module}/linalg/_umath_linalg.cpython-3*.so
 %attr(755,root,root) %{py3_sitedir}/%{module}/linalg/lapack_lite.cpython-3*.so
 %dir %{py3_sitedir}/%{module}/ma
 %{py3_sitedir}/%{module}/ma/*.py
