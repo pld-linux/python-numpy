@@ -7,13 +7,13 @@
 Summary:	Python 2 numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
-Version:	1.9.1
-Release:	2
+Version:	1.9.2
+Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/numpy/%{module}-%{version}.tar.gz
-# Source0-md5:	78842b73560ec378142665e712ae4ad9
+# Source0-md5:	a1ed53432dbcd256398898d35bc8e645
 Patch0:		%{name}-fortran-version.patch
 URL:		http://sourceforge.net/projects/numpy/
 %if %{with python2}
