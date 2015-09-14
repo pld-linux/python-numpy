@@ -8,7 +8,7 @@ Summary:	Python 2 numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
 Version:	1.9.2
-Release:	3
+Release:	4
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
