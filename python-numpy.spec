@@ -7,17 +7,17 @@
 Summary:	Python 2 numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
-Version:	1.9.2
-Release:	4
+Version:	1.10.1
+Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/numpy/%{module}-%{version}.tar.gz
-# Source0-md5:	a1ed53432dbcd256398898d35bc8e645
+# Source0-md5:	3fed2b50906bc19018cec5fa26168aa5
 Patch0:		%{name}-fortran-version.patch
 URL:		http://sourceforge.net/projects/numpy/
 %if %{with python2}
-BuildRequires:	python-devel
+BuildRequires:	python-devel >= 1:2.6
 %pyrequires_eq	python-libs
 %endif
 %if %{with python3}
@@ -201,7 +201,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/%{module}/lib
 %{py_sitedir}/%{module}/lib/*.py
 %{py_sitedir}/%{module}/lib/*.py[co]
-%attr(755,root,root) %{py_sitedir}/%{module}/lib/_compiled_base.so
 %dir %{py_sitedir}/%{module}/linalg
 %{py_sitedir}/%{module}/linalg/*.py
 %{py_sitedir}/%{module}/linalg/*.py[co]
@@ -226,9 +225,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/%{module}/tests
 %{py_sitedir}/%{module}/tests/*.py
 %{py_sitedir}/%{module}/tests/*.py[co]
-%if "%{py_ver}" > "2.4"
 %{py_sitedir}/numpy-%{version}-py*.egg-info
-%endif
 
 %files devel
 %defattr(644,root,root,755)
@@ -274,7 +271,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py3_sitedir}/%{module}/lib
 %{py3_sitedir}/%{module}/lib/*.py
 %{py3_sitedir}/%{module}/lib/__pycache__
-%attr(755,root,root) %{py3_sitedir}/%{module}/lib/_compiled_base.cpython-3*.so
 %dir %{py3_sitedir}/%{module}/linalg
 %{py3_sitedir}/%{module}/linalg/*.py
 %{py3_sitedir}/%{module}/linalg/__pycache__
