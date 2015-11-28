@@ -133,19 +133,18 @@ CC="%{__cc}"; export CC
 CFLAGS="%{rpmcflags}"; export CFLAGS
 
 %if %{with python2}
-%{__python} setup.py build
+%py_build
 %endif
 
 %if %{with python3}
-%{__python3} setup.py build
+%py3_build
 %endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %if %{with python2}
-%{__python} setup.py install \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
 %py_comp $RPM_BUILD_ROOT%{py_sitedir}
@@ -157,8 +156,7 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %if %{with python3}
-%{__python3} setup.py install \
-	--root=$RPM_BUILD_ROOT
+%py3_install
 
 %py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}
 %py3_comp $RPM_BUILD_ROOT%{py3_sitedir}
