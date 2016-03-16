@@ -7,16 +7,16 @@
 Summary:	Python 2 numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
-Version:	1.10.1
-Release:	2
+Version:	1.10.4
+Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/numpy/%{module}-%{version}.tar.gz
-# Source0-md5:	3fed2b50906bc19018cec5fa26168aa5
+# Source0-md5:	90bb9034652cefbada19cf7d141a6a61
 Patch0:		%{name}-fortran-version.patch
 URL:		http://sourceforge.net/projects/numpy/
-BuildRequires:	rpmbuild(macros) >= 1.710
+BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.6
 %pyrequires_eq	python-libs
@@ -130,8 +130,10 @@ Generator interfejsów z Fortranu do Pythona 3.
 %patch0 -p1
 
 %build
-CC="%{__cc}"; export CC
-CFLAGS="%{rpmcflags}"; export CFLAGS
+# numpy.distutils uses CFLAGS/LDFLAGS as its own flags replacements,
+# instead of appending proper options (like -fPIC/-shared resp.)
+CFLAGS="%{rpmcflags} -fPIC"
+LDFLAGS="%{rpmldflags} -shared"
 
 %if %{with python2}
 %py_build
@@ -234,7 +236,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n f2py
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/f2py
+%attr(755,root,root) %{_bindir}/f2py2
 %dir %{py_sitedir}/%{module}/f2py
 %{py_sitedir}/%{module}/f2py/*.py
 %{py_sitedir}/%{module}/f2py/*.py[co]
