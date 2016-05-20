@@ -7,27 +7,29 @@
 Summary:	Python 2 numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
-Version:	1.10.4
+Version:	1.11.0
 Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/numpy/%{module}-%{version}.tar.gz
-# Source0-md5:	90bb9034652cefbada19cf7d141a6a61
+# Source0-md5:	bc56fb9fc2895aa4961802ffbdb31d0b
 Patch0:		%{name}-fortran-version.patch
 URL:		http://sourceforge.net/projects/numpy/
-BuildRequires:	rpmbuild(macros) >= 1.714
-%if %{with python2}
-BuildRequires:	python-devel >= 1:2.6
-%pyrequires_eq	python-libs
-%endif
-%if %{with python3}
-BuildRequires:	python3-devel >= 1:3.3
-BuildRequires:	python3-2to3
-%endif
 BuildRequires:	gcc-fortran
 BuildRequires:	lapack-devel >= 3.1.1-2
+%if %{with python2}
+BuildRequires:	python-devel >= 1:2.6
+BuildRequires:	python-setuptools
+%endif
+%if %{with python3}
+BuildRequires:	python3-2to3
+BuildRequires:	python3-devel >= 1:3.3
+BuildRequires:	python3-setuptools
+%endif
 BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.714
+Requires:	python-libs >= 1:2.6
 # -- dropped some time ago
 Obsoletes:	python-numpy-Properties
 # -- dropped some time ago, should have been released as separate package, but wasn't
@@ -86,6 +88,7 @@ Generator interfejsów z Fortranu do Pythona 2.
 Summary:	Python 3.x numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 3.x
 Group:		Libraries/Python
+Requires:	python3-libs >= 1:3.3
 
 %description -n python3-%{module}
 NumPy is a collection of extension modules to provide high-performance
@@ -103,7 +106,7 @@ Ten pakiet zawiera moduły Pythona 3.
 Summary:	C header files for Python 3 numerical modules
 Summary(pl.UTF-8):	Pliki nagłówkowe języka C modułów numerycznych Pythona 3
 Group:		Development/Languages/Python
-%pyrequires_eq	python-devel
+%pyrequires_eq	python3-devel
 Requires:	python3-%{module} = %{epoch}:%{version}-%{release}
 Obsoletes:	python-Numeric-devel
 
