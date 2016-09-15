@@ -7,13 +7,13 @@
 Summary:	Python 2 numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
-Version:	1.11.0
+Version:	1.11.1
 Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/numpy/%{module}-%{version}.tar.gz
-# Source0-md5:	bc56fb9fc2895aa4961802ffbdb31d0b
+# Source0-md5:	2f44a895a8104ffac140c3a70edbd450
 Patch0:		%{name}-fortran-version.patch
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	gcc-fortran
