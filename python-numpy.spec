@@ -7,15 +7,14 @@
 Summary:	Python 2 numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
-Version:	1.12.1
-Release:	3
+Version:	1.14.5
+Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://github.com/numpy/numpy/releases/
 Source0:	https://github.com/numpy/numpy/releases/download/v%{version}/%{module}-%{version}.tar.gz
-# Source0-md5:	2abe6efb8ea0ac1716d1fc5fa90cbacf
-Patch0:		%{name}-fortran-version.patch
+# Source0-md5:	e3189ee851c3a0e2e6e4c6e80a711ec8
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	gcc-fortran
 BuildRequires:	lapack-devel >= 3.1.1-2
@@ -131,7 +130,6 @@ Generator interfejsów z Fortranu do Pythona 3.
 
 %prep
 %setup -q -n %{module}-%{version}
-%patch0 -p1
 
 %build
 # numpy.distutils uses CFLAGS/LDFLAGS as its own flags replacements,
