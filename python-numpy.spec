@@ -8,7 +8,7 @@ Summary:	Python 2 numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
 Version:	1.14.5
-Release:	1
+Release:	2
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
@@ -225,6 +225,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/%{module}/testing
 %{py_sitedir}/%{module}/testing/*.py
 %{py_sitedir}/%{module}/testing/*.py[co]
+%dir %{py_sitedir}/%{module}/testing/nose_tools
+%{py_sitedir}/%{module}/testing/nose_tools/*.py
+%{py_sitedir}/%{module}/testing/nose_tools/*.py[co]
 %dir %{py_sitedir}/%{module}/tests
 %{py_sitedir}/%{module}/tests/*.py
 %{py_sitedir}/%{module}/tests/*.py[co]
@@ -295,6 +298,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py3_sitedir}/%{module}/testing
 %{py3_sitedir}/%{module}/testing/*.py
 %{py3_sitedir}/%{module}/testing/__pycache__
+%dir %{py3_sitedir}/%{module}/testing/nose_tools
+%{py3_sitedir}/%{module}/testing/nose_tools/*.py
+%{py3_sitedir}/%{module}/testing/nose_tools/__pycache__
 %dir %{py3_sitedir}/%{module}/tests
 %{py3_sitedir}/%{module}/tests/*.py
 %{py3_sitedir}/%{module}/tests/__pycache__
