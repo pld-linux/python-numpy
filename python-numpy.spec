@@ -7,14 +7,14 @@
 Summary:	Python 2 numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
-Version:	1.14.5
-Release:	3
+Version:	1.15.4
+Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://github.com/numpy/numpy/releases/
 Source0:	https://github.com/numpy/numpy/releases/download/v%{version}/%{module}-%{version}.tar.gz
-# Source0-md5:	e3189ee851c3a0e2e6e4c6e80a711ec8
+# Source0-md5:	b3626fec2f39ab01cad8bbb63a103742
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	gcc-fortran
 BuildRequires:	lapack-devel >= 3.1.1-2
@@ -156,6 +156,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/%{module}/doc
 %{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/%{module}/*/tests
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/%{module}/LICENSE.txt
 
 %{__rm} $RPM_BUILD_ROOT%{py_sitedir}/%{module}/distutils/mingw/gfortran_vs2003_hack.c
 %endif
@@ -168,6 +169,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} -r $RPM_BUILD_ROOT%{py3_sitedir}/%{module}/doc
 %{__rm} -r $RPM_BUILD_ROOT%{py3_sitedir}/%{module}/*/tests
+%{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/%{module}/LICENSE.txt
 
 %{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/%{module}/distutils/mingw/gfortran_vs2003_hack.c
 %endif
@@ -178,6 +180,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
+%doc LICENSE.txt THANKS.txt
 %dir %{py_sitedir}/%{module}
 %{py_sitedir}/%{module}/*.py
 %{py_sitedir}/%{module}/*.py[co]
@@ -223,11 +226,9 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/%{module}/random/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/random/mtrand.so
 %dir %{py_sitedir}/%{module}/testing
+%{py_sitedir}/%{module}/testing/_private
 %{py_sitedir}/%{module}/testing/*.py
 %{py_sitedir}/%{module}/testing/*.py[co]
-%dir %{py_sitedir}/%{module}/testing/nose_tools
-%{py_sitedir}/%{module}/testing/nose_tools/*.py
-%{py_sitedir}/%{module}/testing/nose_tools/*.py[co]
 %dir %{py_sitedir}/%{module}/tests
 %{py_sitedir}/%{module}/tests/*.py
 %{py_sitedir}/%{module}/tests/*.py[co]
@@ -251,6 +252,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
+%doc LICENSE.txt THANKS.txt
 %dir %{py3_sitedir}/%{module}
 %{py3_sitedir}/%{module}/*.py
 %{py3_sitedir}/%{module}/__pycache__
@@ -296,11 +298,9 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/%{module}/random/__pycache__
 %attr(755,root,root) %{py3_sitedir}/%{module}/random/mtrand.cpython-3*.so
 %dir %{py3_sitedir}/%{module}/testing
+%{py3_sitedir}/%{module}/testing/_private
 %{py3_sitedir}/%{module}/testing/*.py
 %{py3_sitedir}/%{module}/testing/__pycache__
-%dir %{py3_sitedir}/%{module}/testing/nose_tools
-%{py3_sitedir}/%{module}/testing/nose_tools/*.py
-%{py3_sitedir}/%{module}/testing/nose_tools/__pycache__
 %dir %{py3_sitedir}/%{module}/tests
 %{py3_sitedir}/%{module}/tests/*.py
 %{py3_sitedir}/%{module}/tests/__pycache__
