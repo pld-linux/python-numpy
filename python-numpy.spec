@@ -7,14 +7,14 @@
 Summary:	Python 2 numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
-Version:	1.15.4
+Version:	1.16.5
 Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://github.com/numpy/numpy/releases/
 Source0:	https://github.com/numpy/numpy/releases/download/v%{version}/%{module}-%{version}.tar.gz
-# Source0-md5:	b3626fec2f39ab01cad8bbb63a103742
+# Source0-md5:	f9c22f53f17e81b25af8e53b026a9831
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	gcc-fortran
 BuildRequires:	lapack-devel >= 3.1.1-2
