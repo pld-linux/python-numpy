@@ -1,3 +1,4 @@
+# NOTE: 1.16.x is the last series with python 2.7 support; for newer versions see python3-numpy.spec
 #
 # Conditional build:
 %bcond_without  python2 # CPython 2.x modules
@@ -7,14 +8,15 @@
 Summary:	Python 2 numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
-Version:	1.16.5
-Release:	2
+# keep 1.16.x series here, see note above
+Version:	1.16.6
+Release:	1
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://github.com/numpy/numpy/releases/
 Source0:	https://github.com/numpy/numpy/releases/download/v%{version}/%{module}-%{version}.tar.gz
-# Source0-md5:	f9c22f53f17e81b25af8e53b026a9831
+# Source0-md5:	5e958c603605f3168b7b29f421f64cdd
 URL:		http://sourceforge.net/projects/numpy/
 BuildRequires:	gcc-fortran
 BuildRequires:	lapack-devel >= 3.1.1-2
@@ -243,6 +245,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n f2py
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/f2py2
+%attr(755,root,root) %{_bindir}/f2py%{py_ver}
 %dir %{py_sitedir}/%{module}/f2py
 %{py_sitedir}/%{module}/f2py/*.py
 %{py_sitedir}/%{module}/f2py/*.py[co]
@@ -315,6 +318,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n f2py3
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/f2py3
+%attr(755,root,root) %{_bindir}/f2py%{py3_ver}
 %dir %{py3_sitedir}/%{module}/f2py
 %{py3_sitedir}/%{module}/f2py/*.py
 %{py3_sitedir}/%{module}/f2py/__pycache__
