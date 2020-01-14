@@ -152,10 +152,8 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %py_install
 
-%py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
-%py_comp $RPM_BUILD_ROOT%{py_sitedir}
-
 %{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/%{module}/doc
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/%{module}/tests
 %{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/%{module}/*/tests
 %{__rm} $RPM_BUILD_ROOT%{py_sitedir}/%{module}/LICENSE.txt
 
@@ -165,10 +163,8 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %py3_install
 
-%py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}
-%py3_comp $RPM_BUILD_ROOT%{py3_sitedir}
-
 %{__rm} -r $RPM_BUILD_ROOT%{py3_sitedir}/%{module}/doc
+%{__rm} -r $RPM_BUILD_ROOT%{py3_sitedir}/%{module}/tests
 %{__rm} -r $RPM_BUILD_ROOT%{py3_sitedir}/%{module}/*/tests
 %{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/%{module}/LICENSE.txt
 
@@ -230,9 +226,6 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/%{module}/testing/_private
 %{py_sitedir}/%{module}/testing/*.py
 %{py_sitedir}/%{module}/testing/*.py[co]
-%dir %{py_sitedir}/%{module}/tests
-%{py_sitedir}/%{module}/tests/*.py
-%{py_sitedir}/%{module}/tests/*.py[co]
 %{py_sitedir}/numpy-%{version}-py*.egg-info
 
 %files devel
@@ -303,9 +296,6 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/%{module}/testing/_private
 %{py3_sitedir}/%{module}/testing/*.py
 %{py3_sitedir}/%{module}/testing/__pycache__
-%dir %{py3_sitedir}/%{module}/tests
-%{py3_sitedir}/%{module}/tests/*.py
-%{py3_sitedir}/%{module}/tests/__pycache__
 %{py3_sitedir}/numpy-%{version}-py*.egg-info
 
 %files -n python3-%{module}-devel
