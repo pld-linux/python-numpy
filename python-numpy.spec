@@ -25,8 +25,7 @@ BuildRequires:	python-devel >= 1:2.7
 BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
-BuildRequires:	python3-2to3
-BuildRequires:	python3-devel >= 1:3.4
+BuildRequires:	python3-devel >= 1:3.5
 BuildRequires:	python3-setuptools
 %endif
 BuildRequires:	rpm-pythonprov
@@ -90,7 +89,7 @@ Generator interfejsów z Fortranu do Pythona 2.
 Summary:	Python 3.x numerical facilities
 Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 3.x
 Group:		Libraries/Python
-Requires:	python3-libs >= 1:3.4
+Requires:	python3-libs >= 1:3.5
 
 %description -n python3-%{module}
 NumPy is a collection of extension modules to provide high-performance
