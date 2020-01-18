@@ -1,8 +1,8 @@
 # NOTE: 1.16.x is the last series with python 2.7 support; for newer versions see python3-numpy.spec
 #
 # Conditional build:
-%bcond_without  python2 # CPython 2.x modules
-%bcond_without  python3 # CPython 3.x modules
+%bcond_without	python2	# CPython 2.x modules
+%bcond_with	python3	# CPython 3.x modules
 
 %define		module	numpy
 Summary:	Python 2 numerical facilities
