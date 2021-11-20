@@ -10,7 +10,7 @@ Summary(pl.UTF-8):	Moduły do obliczeń numerycznych dla języka Python 2
 Name:		python-%{module}
 # keep 1.16.x series here, see note above
 Version:	1.16.6
-Release:	2
+Release:	3
 Epoch:		1
 License:	BSD
 Group:		Libraries/Python
