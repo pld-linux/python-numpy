@@ -32,18 +32,19 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 Requires:	python-libs >= 1:2.7
 # -- dropped some time ago
-Obsoletes:	python-numpy-Properties
+Obsoletes:	python-numpy-Properties < 23
+Obsoletes:	python-numpy-gist < 20
 # -- dropped some time ago, should have been released as separate package, but wasn't
-Obsoletes:	python-numpy-kinds
+Obsoletes:	python-numpy-kinds < 23
 # old subpackage, merged into main
-Obsoletes:	python-numpy-FFT
+Obsoletes:	python-numpy-FFT < 1:1.0.3-1
 # -- dropped during Numeric->numpy transition (ma in main now?)
-Obsoletes:	python-numpy-MA
-Obsoletes:	python-numpy-RNG
-Obsoletes:	python-Numeric
-Obsoletes:	python-Numeric-FFT
-Obsoletes:	python-Numeric-MA
-Obsoletes:	python-Numeric-RNG
+Obsoletes:	python-numpy-MA < 1:0.9.8
+Obsoletes:	python-numpy-RNG < 1:0.9.8
+Obsoletes:	python-Numeric < 25
+Obsoletes:	python-Numeric-FFT < 25
+Obsoletes:	python-Numeric-MA < 25
+Obsoletes:	python-Numeric-RNG < 25
 Requires:	pydoc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -65,7 +66,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe języka C modułów numerycznych Pythona 2
 Group:		Development/Languages/Python
 %pyrequires_eq	python-devel
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Obsoletes:	python-Numeric-devel
+Obsoletes:	python-Numeric-devel < 25
 
 %description devel
 C header files for Python 2 numerical modules.
@@ -109,7 +110,6 @@ Summary(pl.UTF-8):	Pliki nagłówkowe języka C modułów numerycznych Pythona 3
 Group:		Development/Languages/Python
 %pyrequires_eq	python3-devel
 Requires:	python3-%{module} = %{epoch}:%{version}-%{release}
-Obsoletes:	python-Numeric-devel
 
 %description -n python3-%{module}-devel
 C header files for Python 3 numerical modules.
